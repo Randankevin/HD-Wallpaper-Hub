@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wallpapers For The Boys</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 50%, #000000 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(220, 20, 60, 0.15);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 80px 0 120px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 900;
+            margin: 0 0 20px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 22px;
+            opacity: 0.9;
+            margin: 0 0 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border: none;
+            padding: 18px 40px;
+            border-radius: 30px;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.6);
+        }
+
+        /* Wallpapers Section */
+        .wallpapers-section {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 80px 0;
+            margin: 0 20px;
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(220, 20, 60, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            font-weight: 800;
+            margin: 0 0 60px;
+            color: #ffffff;
+        }
+
+        .wallpaper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .wallpaper-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(220, 20, 60, 0.3);
+        }
+
+        .wallpaper-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(220, 20, 60, 0.3);
+            background: rgba(0, 0, 0, 0.8);
+            border-color: rgba(220, 20, 60, 0.6);
+        }
+
+        .wallpaper-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .wallpaper-info {
+            padding: 25px;
+        }
+
+        .wallpaper-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 0 8px;
+            color: #ffffff;
+        }
+
+        .wallpaper-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .download-btn {
+            background: rgba(220, 20, 60, 0.4);
+            border: 1px solid rgba(220, 20, 60, 0.6);
+            padding: 8px 16px;
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background: rgba(220, 20, 60, 0.7);
+            border-color: rgba(220, 20, 60, 0.9);
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 60px 0 40px;
+            margin-top: 80px;
+            text-align: center;
+            border-top: 1px solid rgba(220, 20, 60, 0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .wallpaper-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">Wallpapers For The Boys</a>
+                <ul class="nav-links">
+                    <li><a href="#cars">Cars</a></li>
+                    <li><a href="#bikes">Bikes</a></li>
+                    <li><a href="#planes">Planes</a></li>
+                    <li><a href="#other">Other</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Wallpapers For The Boys</h1>
+                <p>Premium HD wallpapers for cars, bikes, planes, and everything masculine. Free downloads, no signup required.</p>
+                <button class="cta-button" onclick="document.getElementById('cars').scrollIntoView({behavior: 'smooth'})">
+                    Explore Wallpapers
+                </button>
+            </div>
+        </section>
+
+        <!-- Cars Section -->
+        <section class="wallpapers-section" id="cars">
+            <div class="container">
+                <h2 class="section-title">🚗 Car Wallpapers</h2>
+                <div class="wallpaper-grid" id="cars-grid">
+                    <!-- Cars will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Bikes Section -->
+        <section class="wallpapers-section" id="bikes">
+            <div class="container">
+                <h2 class="section-title">🏍 Bike Wallpapers</h2>
+                <div class="wallpaper-grid" id="bikes-grid">
+                    <!-- Bikes will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Planes Section -->
+        <section class="wallpapers-section" id="planes">
+            <div class="container">
+                <h2 class="section-title">✈ Plane Wallpapers</h2>
+                <div class="wallpaper-grid" id="planes-grid">
+                    <!-- Planes will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Section -->
+        <section class="wallpapers-section" id="other">
+            <div class="container">
+                <h2 class="section-title">💪 Other Cool Stuff</h2>
+                <div class="wallpaper-grid" id="other-grid">
+                    <!-- Other wallpapers will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>© 2024 Wallpapers For The Boys. All rights reserved.</p>
+                <p>Made by Randan Kevin</p>
+                <p>Whatsapp 0708063827</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Sample wallpaper data - Replace these with your actual image URLs
+        const wallpapers = {
+            cars: [
+                {
+                    title: "NISSAN GTR",
+                    imageUrl: "wallpapers/cars/Cream GTR.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                {
+                    title: "YELLOW GTR",
+                    imageUrl: "wallpapers/cars/Yellow GTR.jpg", 
+                    resolution: "4K",
+                    size: "2.4MB"
+                },
+                {
+                    title: "WHITE GTR ",
+                    imageUrl: "wallpapers/cars/Grey-White GTR.jpg",
+                    resolution: "4K", 
+                    size: "2.3MB"
+                },
+                {
+                    title: "RED GTR ",
+                    imageUrl: "wallpapers/cars/RED GTR.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "WHITE GTR",
+                    imageUrl: "wallpapers/cars/WHITE GTR.jpg",
+                    resolution: "4K",
+                    size: "2.5MB"
+                },
+                {
+                    title: "Bumblebee SRT",
+                    imageUrl: "wallpapers/cars/Bumblebee SRT.jpg",
+                    resolution: "4K",
+                    size: "2.3MB"
+                },
+           
+                {
+                    title: "Red & Black SRT",
+                    imageUrl: "wallpapers/cars/Red & Black SRT.jpg",
+                    resolution: "4K",
+                    size: "2.0MB"
+                },
+                {
+                    title: "Dodge Charger",
+                    imageUrl: "wallpapers/cars/Dodge Charger.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Dark Red Hellcat",
+                    imageUrl: "wallpapers/cars/Dark Red Hellcat.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                {
+                    title: "Black & Red SRT",
+                    imageUrl: "wallpapers/cars/Black & Red SRT.jpg",
+                    resolution: "4K",
+                    size: "2.3MB"
+                },
+                {
+                    title: "Black & Yellow GTR",
+                    imageUrl: "wallpapers/cars/Black and Yellow GTR.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+               
+            ],
+            planes: [
+                {
+                    title: "F-22 Raptor",
+                    imageUrl: "wallpapers/planes/f22.jpg",
+                    resolution: "4K",
+                    size: "2.8MB"
+                },
+                {
+                    title: "Boeing 747",
+                    imageUrl: "wallpapers/planes/boeing.jpg",
+                    resolution: "4K",
+                    size: "3.1MB"
+                },
+                {
+                    title: "Airbus A380",
+                    imageUrl: "wallpapers/planes/airbus.jpg",
+                    resolution: "4K",
+                    size: "3.0MB"
+                },
+                {
+                    title: "F-35 Lightning II",
+                    imageUrl: "wallpapers/planes/f35.jpg",
+                    resolution: "4K",
+                    size: "2.9MB"
+                },
+                {
+                    title: "SR-71 Blackbird",
+                    imageUrl: "wallpapers/planes/blackbird.jpg",
+                    resolution: "4K",
+                    size: "2.7MB"
+                },
+                {
+                    title: "Cessna Citation",
+                    imageUrl: "wallpapers/planes/cessna.jpg",
+                    resolution: "4K",
+                    size: "2.5MB"
+                }
+            ],
+            other: [
+                {
+                    title: "Modern Watch",
+                    imageUrl: "wallpapers/other/watch.jpg",
+                    resolution: "4K",
+                    size: "1.8MB"
+                },
+                {
+                    title: "Gaming Setup",
+                    imageUrl: "wallpapers/other/gaming.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Abstract Tech",
+                    imageUrl: "wallpapers/other/tech.jpg",
+                    resolution: "4K",
+                    size: "1.9MB"
+                },
+                {
+                    title: "Minimal Design",
+                    imageUrl: "wallpapers/other/minimal.jpg",
+                    resolution: "4K",
+                    size: "1.7MB"
+                },
+                {
+                    title: "Mountain Adventure",
+                    imageUrl: "wallpapers/other/adventure.jpg",
+                    resolution: "4K",
+                    size: "2.4MB"
+                },
+                {
+                    title: "City Skyline",
+                    imageUrl: "wallpapers/other/city.jpg",
+                    resolution: "4K",
+                    size: "2.3MB"
+                }
+            ]
+        };
+
+        // Function to create wallpaper card HTML
+        function createWallpaperCard(wallpaper) {
+            return `
+                <div class="wallpaper-card">
+                    <img src="${wallpaper.imageUrl}" alt="${wallpaper.title}" class="wallpaper-image" onerror="this.src='https://via.placeholder.com/300x200/333333/ffffff?text=Image+Coming+Soon'">
+                    <div class="wallpaper-info">
+                        <h3 class="wallpaper-title">${wallpaper.title}</h3>
+                        <div class="wallpaper-meta">
+                            <span>${wallpaper.resolution} • ${wallpaper.size}</span>
+                            <a href="${wallpaper.imageUrl}" download="${wallpaper.title.replace(/\s+/g, '_')}.jpg" class="download-btn">
+                                Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to load wallpapers for a category
+        function loadWallpapers(category, gridId) {
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+
+            grid.innerHTML = wallpapers[category].map(createWallpaperCard).join('');
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load all categories
+            loadWallpapers('cars', 'cars-grid');
+            loadWallpapers('bikes', 'bikes-grid');
+            loadWallpapers('planes', 'planes-grid');
+            loadWallpapers('other', 'other-grid');
+
+            // Add smooth scrolling for navigation links
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
