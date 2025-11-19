@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wallpapers For The Boys</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
         * {
             margin: 0;
@@ -66,6 +67,69 @@
         .nav-links a:hover {
             opacity: 1;
             transform: translateY(-2px);
+        }
+
+        /* Auth Section */
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .auth-btn {
+            background: rgba(220, 20, 60, 0.3);
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #ffffff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-btn:hover {
+            background: rgba(220, 20, 60, 0.5);
+            border-color: rgba(220, 20, 60, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 12px;
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
         }
 
         /* Hero Section */
@@ -142,6 +206,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
             border: 1px solid rgba(220, 20, 60, 0.3);
+            cursor: pointer;
         }
 
         .wallpaper-card:hover {
@@ -196,6 +261,256 @@
             border-color: rgba(220, 20, 60, 0.9);
         }
 
+        .download-btn.locked {
+            background: rgba(128, 128, 128, 0.4);
+            border-color: rgba(128, 128, 128, 0.6);
+            cursor: not-allowed;
+        }
+
+        .download-btn.locked:hover {
+            background: rgba(128, 128, 128, 0.6);
+        }
+
+        /* Detail View Modal */
+        .detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .detail-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: 2% auto;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            border: 2px solid rgba(220, 20, 60, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(220, 20, 60, 0.1);
+            border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+        }
+
+        .detail-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: rgba(220, 20, 60, 0.3);
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(220, 20, 60, 0.5);
+            border-color: rgba(220, 20, 60, 0.8);
+        }
+
+        .detail-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .detail-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+        }
+
+        .detail-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(220, 20, 60, 0.1);
+            border-top: 1px solid rgba(220, 20, 60, 0.3);
+        }
+
+        .detail-meta {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .detail-download-btn {
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .detail-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+        }
+
+        .detail-download-btn.locked {
+            background: linear-gradient(45deg, #666, #888);
+            cursor: not-allowed;
+        }
+
+        .detail-download-btn.locked:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Auth Modal */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .auth-content {
+            position: relative;
+            max-width: 400px;
+            margin: 5% auto;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            border: 2px solid rgba(220, 20, 60, 0.5);
+            overflow: hidden;
+            padding: 30px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .auth-subtitle {
+            opacity: 0.7;
+            margin-bottom: 20px;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .auth-tab.active {
+            opacity: 1;
+            border-bottom: 2px solid #dc143c;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 16px;
+        }
+
+        .auth-submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .auth-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+        }
+
+        .auth-switch {
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .auth-switch a {
+            color: #dc143c;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .auth-error {
+            color: #ff4444;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
         /* Footer */
         .footer {
             background: rgba(0, 0, 0, 0.8);
@@ -232,6 +547,17 @@
             .wallpaper-grid {
                 grid-template-columns: 1fr;
             }
+
+            .detail-content {
+                max-width: 95%;
+                max-height: 95%;
+                margin: 5% auto;
+            }
+
+            .auth-content {
+                max-width: 90%;
+                margin: 10% auto;
+            }
         }
     </style>
 </head>
@@ -246,6 +572,22 @@
                     <li><a href="#planes">Planes</a></li>
                     <li><a href="#other">Other</a></li>
                 </ul>
+                
+                <div class="auth-section">
+                    <div id="auth-buttons" class="auth-buttons">
+                        <button class="auth-btn" onclick="openAuthModal()">
+                            <i class="fas fa-sign-in-alt"></i> Sign In
+                        </button>
+                    </div>
+                    
+                    <div id="user-menu" class="user-menu" style="display: none;">
+                        <div class="user-info">
+                            <div class="user-avatar" id="user-avatar">U</div>
+                            <span id="user-email">user@example.com</span>
+                        </div>
+                        <button class="logout-btn" onclick="signOut()">Logout</button>
+                    </div>
+                </div>
             </nav>
         </div>
     </header>
@@ -254,7 +596,7 @@
         <section class="hero">
             <div class="container">
                 <h1>Wallpapers For The Boys</h1>
-                <p>Premium HD wallpapers for cars, bikes, planes, and everything masculine. Free downloads, no signup required.</p>
+                <p>Premium HD wallpapers for cars, bikes, planes, and everything masculine. Sign in to download high-quality wallpapers.</p>
                 <button class="cta-button" onclick="document.getElementById('cars').scrollIntoView({behavior: 'smooth'})">
                     Explore Wallpapers
                 </button>
@@ -274,7 +616,7 @@
         <!-- Bikes Section -->
         <section class="wallpapers-section" id="bikes">
             <div class="container">
-                <h2 class="section-title">🏍 Bike Wallpapers</h2>
+                <h2 class="section-title">🏍️ Bike Wallpapers</h2>
                 <div class="wallpaper-grid" id="bikes-grid">
                     <!-- Bikes will be loaded here by JavaScript -->
                 </div>
@@ -284,7 +626,7 @@
         <!-- Planes Section -->
         <section class="wallpapers-section" id="planes">
             <div class="container">
-                <h2 class="section-title">✈ Plane Wallpapers</h2>
+                <h2 class="section-title">✈️ Plane Wallpapers</h2>
                 <div class="wallpaper-grid" id="planes-grid">
                     <!-- Planes will be loaded here by JavaScript -->
                 </div>
@@ -302,22 +644,101 @@
         </section>
     </main>
 
+    <!-- Detail View Modal -->
+    <div class="detail-modal" id="detailModal">
+        <div class="detail-content">
+            <div class="detail-header">
+                <h2 class="detail-title" id="detailTitle">Wallpaper Title</h2>
+                <button class="close-btn" onclick="closeDetail()">✕ Close</button>
+            </div>
+            <div class="detail-image-container">
+                <img id="detailImage" src="" alt="" class="detail-image">
+            </div>
+            <div class="detail-footer">
+                <div class="detail-meta" id="detailMeta">4K • 2.1MB</div>
+                <a href="#" id="detailDownload" class="detail-download-btn locked" onclick="handleDetailDownload(event)">
+                    <i class="fas fa-download"></i> Sign In to Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <div class="auth-header">
+                <h2 class="auth-title">Welcome Back</h2>
+                <p class="auth-subtitle">Sign in to download wallpapers</p>
+            </div>
+            
+            <div class="auth-tabs">
+                <div class="auth-tab active" onclick="switchAuthTab('signin')">Sign In</div>
+                <div class="auth-tab" onclick="switchAuthTab('signup')">Sign Up</div>
+            </div>
+
+            <!-- Sign In Form -->
+            <div id="signin-form" class="auth-form active">
+                <div class="form-group">
+                    <label for="signin-email">Email</label>
+                    <input type="email" id="signin-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signin-password">Password</label>
+                    <input type="password" id="signin-password" placeholder="Enter your password">
+                </div>
+                <button class="auth-submit-btn" onclick="signIn()">Sign In</button>
+                <div class="auth-switch">
+                    Don't have an account? <a onclick="switchAuthTab('signup')">Sign up</a>
+                </div>
+            </div>
+
+            <!-- Sign Up Form -->
+            <div id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="signup-email">Email</label>
+                    <input type="email" id="signup-email" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Create a password">
+                </div>
+                <button class="auth-submit-btn" onclick="signUp()">Sign Up</button>
+                <div class="auth-switch">
+                    Already have an account? <a onclick="switchAuthTab('signin')">Sign in</a>
+                </div>
+            </div>
+
+            <div id="auth-error" class="auth-error"></div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
                 <p>© 2024 Wallpapers For The Boys. All rights reserved.</p>
-                <p>Made by Randan Kevin</p>
-                <p>Whatsapp 0708063827</p>
+                <p>Made with ❤️ for the boys</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Sample wallpaper data - Replace these with your actual image URLs
+        // Supabase configuration
+        const supabaseUrl = 'https://ejnfjvxwhhcbtprqqvtb.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVqbmZqdnh3aGhjYnRwcnFxdnRiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMxMTgzODEsImV4cCI6MjA3ODY5NDM4MX0.0RwrbKyaY1Wk_ZM6iwUxnf5bcaa9C_n-BVM_hFfA6SM';
+        let supabase;
+
+        try {
+            supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+            console.log('Supabase client initialized');
+        } catch (error) {
+            console.error('Error initializing Supabase:', error);
+        }
+
+        // Sample wallpaper data
         const wallpapers = {
             cars: [
                 {
-                    title: "NISSAN GTR",
+                    title: "NISSAN GTR"
                     imageUrl: "wallpapers/cars/Cream GTR.jpg",
                     resolution: "4K",
                     size: "2.1MB"
@@ -329,61 +750,60 @@
                     size: "2.4MB"
                 },
                 {
-                    title: "WHITE GTR ",
+                    title: "WHITE GTR",
                     imageUrl: "wallpapers/cars/Grey-White GTR.jpg",
                     resolution: "4K", 
                     size: "2.3MB"
                 },
-                {
-                    title: "RED GTR ",
+            {
+                    title: "RED GTR",
                     imageUrl: "wallpapers/cars/RED GTR.jpg",
                     resolution: "4K",
-                    size: "2.2MB"
+                    size: "2.0MB"
                 },
                 {
                     title: "WHITE GTR",
-                    imageUrl: "wallpapers/cars/WHITE GTR.jpg",
+                    imageUrl: "wallpapers/cars/White GTR.jpg",
+                    resolution: "4harley.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                }, 
+            {
+                    title: "Bumblebee SRT",
+                    imageUrl: "wallpapers/cars/Bumblebee SRT.jpg",
                     resolution: "4K",
                     size: "2.5MB"
                 },
                 {
-                    title: "Bumblebee SRT",
-                    imageUrl: "wallpapers/cars/Bumblebee SRT.jpg",
-                    resolution: "4K",
-                    size: "2.3MB"
-                },
-           
-                {
-                    title: "Red & Black SRT",
+                    title: "Red and Black SRT",
                     imageUrl: "wallpapers/cars/Red & Black SRT.jpg",
                     resolution: "4K",
-                    size: "2.0MB"
+                    size: "2.3MB"
                 },
                 {
                     title: "Dodge Charger",
                     imageUrl: "wallpapers/cars/Dodge Charger.jpg",
                     resolution: "4K",
-                    size: "2.2MB"
+                    size: "2.4MB"
                 },
                 {
-                    title: "Dark Red Hellcat",
+                    title: "Red Hellcat",
                     imageUrl: "wallpapers/cars/Dark Red Hellcat.jpg",
                     resolution: "4K",
-                    size: "2.1MB"
+                    size: "2.6MB"
                 },
                 {
                     title: "Black & Red SRT",
                     imageUrl: "wallpapers/cars/Black & Red SRT.jpg",
-                    resolution: "4K",
-                    size: "2.3MB"
+                    resolution:"4K",
+                    size: "2.2MB"
                 },
                 {
                     title: "Black & Yellow GTR",
                     imageUrl: "wallpapers/cars/Black and Yellow GTR.jpg",
                     resolution: "4K",
                     size: "2.1MB"
-                },
-               
+                }
             ],
             planes: [
                 {
@@ -397,30 +817,6 @@
                     imageUrl: "wallpapers/planes/boeing.jpg",
                     resolution: "4K",
                     size: "3.1MB"
-                },
-                {
-                    title: "Airbus A380",
-                    imageUrl: "wallpapers/planes/airbus.jpg",
-                    resolution: "4K",
-                    size: "3.0MB"
-                },
-                {
-                    title: "F-35 Lightning II",
-                    imageUrl: "wallpapers/planes/f35.jpg",
-                    resolution: "4K",
-                    size: "2.9MB"
-                },
-                {
-                    title: "SR-71 Blackbird",
-                    imageUrl: "wallpapers/planes/blackbird.jpg",
-                    resolution: "4K",
-                    size: "2.7MB"
-                },
-                {
-                    title: "Cessna Citation",
-                    imageUrl: "wallpapers/planes/cessna.jpg",
-                    resolution: "4K",
-                    size: "2.5MB"
                 }
             ],
             other: [
@@ -435,45 +831,224 @@
                     imageUrl: "wallpapers/other/gaming.jpg",
                     resolution: "4K",
                     size: "2.2MB"
-                },
-                {
-                    title: "Abstract Tech",
-                    imageUrl: "wallpapers/other/tech.jpg",
-                    resolution: "4K",
-                    size: "1.9MB"
-                },
-                {
-                    title: "Minimal Design",
-                    imageUrl: "wallpapers/other/minimal.jpg",
-                    resolution: "4K",
-                    size: "1.7MB"
-                },
-                {
-                    title: "Mountain Adventure",
-                    imageUrl: "wallpapers/other/adventure.jpg",
-                    resolution: "4K",
-                    size: "2.4MB"
-                },
-                {
-                    title: "City Skyline",
-                    imageUrl: "wallpapers/other/city.jpg",
-                    resolution: "4K",
-                    size: "2.3MB"
                 }
             ]
         };
 
-        // Function to create wallpaper card HTML
-        function createWallpaperCard(wallpaper) {
+        // Auth functions
+        async function signUp() {
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const errorElement = document.getElementById('auth-error');
+
+            if (!email || !password) {
+                showAuthError('Please fill in all fields');
+                return;
+            }
+
+            try {
+                const { data, error } = await supabase.auth.signUp({
+                    email,
+                    password
+                });
+
+                if (error) {
+                    showAuthError(error.message);
+                } else {
+                    showAuthError('Check your email for verification link!', 'success');
+                    setTimeout(() => {
+                        closeAuthModal();
+                        switchAuthTab('signin');
+                    }, 2000);
+                }
+            } catch (error) {
+                showAuthError('An error occurred during sign up');
+            }
+        }
+
+        async function signIn() {
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+            const errorElement = document.getElementById('auth-error');
+
+            if (!email || !password) {
+                showAuthError('Please fill in all fields');
+                return;
+            }
+
+            try {
+                const { data, error } = await supabase.auth.signInWithPassword({
+                    email,
+                    password
+                });
+
+                if (error) {
+                    showAuthError(error.message);
+                } else {
+                    closeAuthModal();
+                    updateAuthUI(true);
+                    updateDownloadButtons();
+                }
+            } catch (error) {
+                showAuthError('An error occurred during sign in');
+            }
+        }
+
+        async function signOut() {
+            try {
+                await supabase.auth.signOut();
+                updateAuthUI(false);
+                updateDownloadButtons();
+            } catch (error) {
+                console.error('Error signing out:', error);
+            }
+        }
+
+        function showAuthError(message, type = 'error') {
+            const errorElement = document.getElementById('auth-error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            errorElement.style.color = type === 'success' ? '#4CAF50' : '#ff4444';
+        }
+
+        function switchAuthTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            
+            document.querySelector(`.auth-tab:nth-child(${tab === 'signin' ? 1 : 2})`).classList.add('active');
+            document.getElementById(`${tab}-form`).classList.add('active');
+            
+            document.getElementById('auth-error').style.display = 'none';
+        }
+
+        function openAuthModal() {
+            document.getElementById('authModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('auth-error').style.display = 'none';
+        }
+
+        // Update UI based on auth state
+        function updateAuthUI(isLoggedIn) {
+            const authButtons = document.getElementById('auth-buttons');
+            const userMenu = document.getElementById('user-menu');
+            const userEmail = document.getElementById('user-email');
+            const userAvatar = document.getElementById('user-avatar');
+
+            if (isLoggedIn) {
+                authButtons.style.display = 'none';
+                userMenu.style.display = 'flex';
+                
+                // Get user info from Supabase
+                supabase.auth.getUser().then(({ data: { user } }) => {
+                    if (user) {
+                        userEmail.textContent = user.email;
+                        userAvatar.textContent = user.email.charAt(0).toUpperCase();
+                    }
+                });
+            } else {
+                authButtons.style.display = 'block';
+                userMenu.style.display = 'none';
+            }
+        }
+
+        // Update download buttons based on auth state
+        function updateDownloadButtons() {
+            const isLoggedIn = document.getElementById('user-menu').style.display === 'flex';
+            
+            // Update card download buttons
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                if (isLoggedIn) {
+                    btn.classList.remove('locked');
+                    const href = btn.getAttribute('data-href');
+                    const download = btn.getAttribute('data-download');
+                    if (href) btn.href = href;
+                    if (download) btn.download = download;
+                    btn.innerHTML = 'Download';
+                } else {
+                    btn.classList.add('locked');
+                    btn.removeAttribute('href');
+                    btn.removeAttribute('download');
+                    btn.innerHTML = 'Sign In to Download';
+                }
+            });
+
+            // Update detail download button
+            const detailBtn = document.getElementById('detailDownload');
+            if (isLoggedIn) {
+                detailBtn.classList.remove('locked');
+                detailBtn.innerHTML = '<i class="fas fa-download"></i> Download HD Version';
+            } else {
+                detailBtn.classList.add('locked');
+                detailBtn.innerHTML = '<i class="fas fa-download"></i> Sign In to Download';
+            }
+        }
+
+        // Detail view functions
+        let currentWallpaper = null;
+
+        function openDetail(imageUrl, title, resolution, size) {
+            const modal = document.getElementById('detailModal');
+            const detailImage = document.getElementById('detailImage');
+            const detailTitle = document.getElementById('detailTitle');
+            const detailMeta = document.getElementById('detailMeta');
+            const detailDownload = document.getElementById('detailDownload');
+            
+            currentWallpaper = { imageUrl, title, resolution, size };
+            
+            detailImage.src = imageUrl;
+            detailTitle.textContent = title;
+            detailMeta.textContent = `${resolution} • ${size}`;
+            
+            const isLoggedIn = document.getElementById('user-menu').style.display === 'flex';
+            if (isLoggedIn) {
+                detailDownload.href = imageUrl;
+                detailDownload.download = `${title.replace(/\s+/g, '_')}.jpg`;
+                detailDownload.classList.remove('locked');
+                detailDownload.innerHTML = '<i class="fas fa-download"></i> Download HD Version';
+            } else {
+                detailDownload.classList.add('locked');
+                detailDownload.innerHTML = '<i class="fas fa-download"></i> Sign In to Download';
+            }
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeDetail() {
+            document.getElementById('detailModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function handleDetailDownload(event) {
+            const isLoggedIn = document.getElementById('user-menu').style.display === 'flex';
+            if (!isLoggedIn) {
+                event.preventDefault();
+                closeDetail();
+                openAuthModal();
+            }
+        }
+
+        // Create wallpaper card
+        function createWallpaperCard(wallpaper, category) {
+            const isLoggedIn = document.getElementById('user-menu').style.display === 'flex';
+            const downloadAttrs = isLoggedIn ? 
+                `href="${wallpaper.imageUrl}" download="${wallpaper.title.replace(/\s+/g, '_')}.jpg"` : 
+                'class="locked"';
+
             return `
-                <div class="wallpaper-card">
+                <div class="wallpaper-card" onclick="openDetail('${wallpaper.imageUrl}', '${wallpaper.title}', '${wallpaper.resolution}', '${wallpaper.size}')">
                     <img src="${wallpaper.imageUrl}" alt="${wallpaper.title}" class="wallpaper-image" onerror="this.src='https://via.placeholder.com/300x200/333333/ffffff?text=Image+Coming+Soon'">
                     <div class="wallpaper-info">
                         <h3 class="wallpaper-title">${wallpaper.title}</h3>
                         <div class="wallpaper-meta">
                             <span>${wallpaper.resolution} • ${wallpaper.size}</span>
-                            <a href="${wallpaper.imageUrl}" download="${wallpaper.title.replace(/\s+/g, '_')}.jpg" class="download-btn">
-                                Download
+                            <a ${downloadAttrs} class="download-btn ${isLoggedIn ? '' : 'locked'}" onclick="event.stopPropagation(); handleCardDownload(event, '${wallpaper.imageUrl}', '${wallpaper.title}')">
+                                ${isLoggedIn ? 'Download' : 'Sign In to Download'}
                             </a>
                         </div>
                     </div>
@@ -481,23 +1056,60 @@
             `;
         }
 
-        // Function to load wallpapers for a category
+        function handleCardDownload(event, imageUrl, title) {
+            const isLoggedIn = document.getElementById('user-menu').style.display === 'flex';
+            if (!isLoggedIn) {
+                event.preventDefault();
+                openAuthModal();
+            }
+        }
+
+        // Load wallpapers
         function loadWallpapers(category, gridId) {
             const grid = document.getElementById(gridId);
             if (!grid) return;
 
-            grid.innerHTML = wallpapers[category].map(createWallpaperCard).join('');
+            grid.innerHTML = wallpapers[category].map(wallpaper => 
+                createWallpaperCard(wallpaper, category)
+            ).join('');
         }
 
-        // Initialize the page
+        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Load all categories
-            loadWallpapers('cars', 'cars-grid');
-            loadWallpapers('bikes', 'bikes-grid');
-            loadWallpapers('planes', 'planes-grid');
-            loadWallpapers('other', 'other-grid');
+            // Check auth state on load
+            supabase.auth.getSession().then(({ data: { session } }) => {
+                updateAuthUI(!!session);
+                loadAllWallpapers();
+                updateDownloadButtons();
+            });
 
-            // Add smooth scrolling for navigation links
+            // Listen for auth state changes
+            supabase.auth.onAuthStateChange((event, session) => {
+                updateAuthUI(!!session);
+                if (event === 'SIGNED_IN') {
+                    loadAllWallpapers();
+                    updateDownloadButtons();
+                }
+            });
+
+            // Close modals on outside click
+            document.getElementById('detailModal').addEventListener('click', function(event) {
+                if (event.target === this) closeDetail();
+            });
+
+            document.getElementById('authModal').addEventListener('click', function(event) {
+                if (event.target === this) closeAuthModal();
+            });
+
+            // Close modals with Escape key
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeDetail();
+                    closeAuthModal();
+                }
+            });
+
+            // Smooth scrolling
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -508,6 +1120,13 @@
                 });
             });
         });
+
+        function loadAllWallpapers() {
+            loadWallpapers('cars', 'cars-grid');
+            loadWallpapers('bikes', 'bikes-grid');
+            loadWallpapers('planes', 'planes-grid');
+            loadWallpapers('other', 'other-grid');
+        }
     </script>
 </body>
 </html>
