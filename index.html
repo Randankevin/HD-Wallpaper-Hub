@@ -1,11 +1,11 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HD Wallpapers For The Boys</title>
+    <title>Wallpapers For The Boys - HD Cars & other Cool Wallpapers</title>
+    <meta name="description" content="Download premium HD wallpapers for cars, hd car wallpapers, spiderman wallpapers, rick and morty wallpapers, f1 wallpapers, BMW wallpapers  and everything masculine. Free 4K wallpapers for desktop and mobile. Lamborghini, Porsche, Ducati, F-22 wallpapers.">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <style>
@@ -458,6 +458,7 @@
 
         .form-group {
             margin-bottom: 20px;
+            position: relative;
         }
 
         .form-group label {
@@ -468,12 +469,28 @@
 
         .form-group input {
             width: 100%;
-            padding: 12px;
+            padding: 12px 45px 12px 12px;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
             background: rgba(0, 0, 0, 0.7);
             color: white;
             font-size: 16px;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 38px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            padding: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .auth-submit-btn {
@@ -570,8 +587,8 @@
                 <a href="#" class="logo">Wallpapers For The Boys</a>
                 <ul class="nav-links">
                     <li><a href="#cars">Cars</a></li>
-                   
-            
+                    <li><a href="#cars">and</a></li>
+                    <li><a href="#other">Other Cool Wallpapers</a></li>
                 </ul>
                 
                 <div class="auth-section">
@@ -597,9 +614,7 @@
         <section class="hero">
             <div class="container">
                 <h1>Wallpapers For The Boys</h1>
-                <p>Premium HD wallpapers for cars and other stuff coming soon. Sign in to download high-quality wallpapers.
-                <br>Okay so, izi ma wallpaper mostly ni za tenje, za lappy zita come soon.<br>
-                <br>Made by Randan kevin. Whatsapp 0708063827</p>
+                <p>Premium HD wallpapers for cars, bikes, planes, and everything masculine. Sign in to download high-quality wallpapers.</p>
                 <button class="cta-button" onclick="document.getElementById('cars').scrollIntoView({behavior: 'smooth'})">
                     Explore Wallpapers
                 </button>
@@ -615,8 +630,15 @@
                 </div>
             </div>
         </section>
-
-     
+        <!-- Other Section -->
+        <section class="wallpapers-section" id="other">
+            <div class="container">
+                <h2 class="section-title">💪 Other Cool Stuff</h2>
+                <div class="wallpaper-grid" id="other-grid">
+                    <!-- Other wallpapers will be loaded here by JavaScript -->
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Detail View Modal -->
@@ -660,6 +682,9 @@
                 <div class="form-group">
                     <label for="signin-password">Password</label>
                     <input type="password" id="signin-password" placeholder="Enter your password">
+                    <button type="button" class="password-toggle" onclick="togglePassword('signin-password', 'signin-toggle')">
+                        <i class="fas fa-eye" id="signin-toggle"></i>
+                    </button>
                 </div>
                 <button class="auth-submit-btn" onclick="signIn()">Sign In</button>
                 <div class="auth-switch">
@@ -676,6 +701,9 @@
                 <div class="form-group">
                     <label for="signup-password">Password</label>
                     <input type="password" id="signup-password" placeholder="Create a password">
+                    <button type="button" class="password-toggle" onclick="togglePassword('signup-password', 'signup-toggle')">
+                        <i class="fas fa-eye" id="signup-toggle"></i>
+                    </button>
                 </div>
                 <button class="auth-submit-btn" onclick="signUp()">Sign Up</button>
                 <div class="auth-switch">
@@ -690,8 +718,8 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-bottom">
-                <p>© 2024 HD Wallpapers For The Boys. All rights reserved.</p>
-                <p>Whatsapp 0708063827</p>
+                <p>© 2024 Wallpapers For The Boys. All rights reserved.</p>
+                <p>Made with ❤️ for the boys</p>
             </div>
         </div>
     </footer>
@@ -709,10 +737,28 @@
             console.error('Error initializing Supabase:', error);
         }
 
-        // Sample wallpaper data
+        // Password toggle functionality
+        function togglePassword(passwordFieldId, toggleIconId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            const toggleIcon = document.getElementById(toggleIconId);
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+                toggleIcon.title = 'Hide password';
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+                toggleIcon.title = 'Show password';
+            }
+        }
+
+        // Wallpaper data
         const wallpapers = {
             cars: [
-                {
+                 {
                     title: "NISSAN GTR",
                     imageUrl: "wallpapers/cars/Cream GTR.jpg",
                     resolution: "4K",
@@ -730,7 +776,12 @@
                     resolution: "4K", 
                     size: "2.3MB"
                 },
-           
+            {
+                    title: "RED GTR",
+                    imageUrl: "wallpapers/cars/RED GTR.jpg",
+                    resolution: "4K",
+                    size: "2.0MB"
+                },
                 {
                     title: "WHITE GTR",
                     imageUrl: "wallpapers/cars/White GTR.jpg",
@@ -742,7 +793,12 @@
                     resolution: "4K",
                     size: "2.5MB"
                 },
-              
+                {
+                    title: "Reddish grey SRT",
+                    imageUrl: "wallpapers/cars/Reddish-grey SRT.jpg",
+                    resolution: "4K",
+                    size: "2.3MB"
+                },
                 {
                     title: "Dodge Charger",
                     imageUrl: "wallpapers/cars/Dodge Charger.jpg",
@@ -755,7 +811,12 @@
                     resolution: "4K",
                     size: "2.6MB"
                 },
-              
+                {
+                    title: "Red and gray SRT",
+                    imageUrl: "wallpapers/cars/Red & grey SRT.jpg",
+                    resolution:"4K",
+                    size: "2.2MB"
+                },
                 {
                     title: "Black & Yellow GTR",
                     imageUrl: "wallpapers/cars/Black and Yellow GTR.jpg",
@@ -882,8 +943,829 @@
                     resolution: "4K",
                     size: "2.1MB"
                 },
+                {  
+                 title: " BMW M4",
+                    imageUrl: "wallpapers/cars/44.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                {  
+                 title: " BMW ",
+                    imageUrl: "wallpapers/cars/444.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                {  
+                 title: "Lambo  ",
+                    imageUrl: "wallpapers/cars/lambo.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                {  
+                 title: " McQueen ",
+                    imageUrl: "wallpapers/cars/lm.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                {  
+                 title: " BMW ",
+                    imageUrl: "wallpapers/cars/m4.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                 {  
+                 title: " Beamer ",
+                    imageUrl: "wallpapers/cars/bima.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                 {  
+                 title: " BMW ",
+                    imageUrl: "wallpapers/cars/bmw b&r.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                 {  
+                 title: " BMW ",
+                    imageUrl: "wallpapers/cars/bmw side.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                 {  
+                 title: " BMW ",
+                    imageUrl: "wallpapers/cars/bmw white.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                 {  
+                 title: " BMW ",
+                    imageUrl: "wallpapers/cars/bmw yellow.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                 {  
+                 title: " Ferrari",
+                    imageUrl: "wallpapers/cars/ferrari.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                 {  
+                 title: " GTR ",
+                    imageUrl: "wallpapers/cars/gtr.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                 {  
+                 title: " Porsche ",
+                    imageUrl: "wallpapers/cars/porshe 1.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                {  
+                 title: " Porsche ",
+                    imageUrl: "wallpapers/cars/porshe.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+                {  
+                 title: " Beamer",
+                    imageUrl: "wallpapers/cars/red bm.jpg",
+                    resolution: "4K",
+                    size: "2.1MB"
+                },
+
+               
+               
+               
+               
+            ],
+            
+            
+            other: [
+                 {
+                    title: "Joker",
+                      imageUrl: "wallpapers/other/j6.jpg",
+                      resolution: "4k",
+                      size: "1.2",
+                },
+                {
+                    title: "Joker",
+                      imageUrl: "wallpapers/other/j14.jpg",
+                      resolution: "4k",
+                      size: "1.2",
+                },
+                {
+                    title: "Joker",
+                      imageUrl: "wallpapers/other/j15.jpg",
+                      resolution: "4k",
+                      size: "1.2",
+                },
+                {
+                    title: "Joker",
+                      imageUrl: "wallpapers/other/j16.jpg",
+                      resolution: "4k",
+                      size: "1.2",
+                },
+                {
+                    title: "Joker",
+                      imageUrl: "wallpapers/other/j17.jpg",
+                      resolution: "4k",
+                      size: "1.2",
+                },
+                {
+                    title: "Joker",
+                      imageUrl: "wallpapers/other/j18.jpg",
+                      resolution: "4k",
+                      size: "1.2",
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a2.jpg",
+                    resolution: "4K",
+                    size: "1.8MB"
+                },
+                {
+                    title: "Dragon",
+                    imageUrl: "wallpapers/other/a1.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                }, 
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a3.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a4.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a5.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a6.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a7.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a8.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a9.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a10.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/a11.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/bm1.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/bm2.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/bm3.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/bm4.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/bm5.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/bm6.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Anime",
+                    imageUrl: "wallpapers/other/bm7.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Joker",
+                    imageUrl: "wallpapers/other/jo1.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Joker",
+                    imageUrl: "wallpapers/other/jo2.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Joker",
+                    imageUrl: "wallpapers/other/jo3.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Joker",
+                    imageUrl: "wallpapers/other/jo4.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Joker",
+                    imageUrl: "wallpapers/other/jo5.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Joker",
+                    imageUrl: "wallpapers/other/jo6.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Joker",
+                    imageUrl: "wallpapers/other/jo7.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j1.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j1.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j3.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j4.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j5.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j6.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                }, 
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j7.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j8.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j9.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j10.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j11.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j12.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j13.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j19.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j20.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j22.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j23.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Japan",
+                    imageUrl: "wallpapers/other/j66.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+
+                {
+                    title: "Ronaldo",
+                    imageUrl: "wallpapers/other/c71.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Ronaldo",
+                    imageUrl: "wallpapers/other/c72.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Ronaldo",
+                    imageUrl: "wallpapers/other/c73.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Ronaldo",
+                    imageUrl: "wallpapers/other/c74.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Ronaldo",
+                    imageUrl: "wallpapers/other/c75.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Ronaldo",
+                    imageUrl: "wallpapers/other/c78.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Ronaldo",
+                    imageUrl: "wallpapers/other/c79.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Ronaldo",
+                    imageUrl: "wallpapers/other/c710.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "F1 Racing",
+                    imageUrl: "wallpapers/other/f1.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "F1 Racing",
+                    imageUrl: "wallpapers/other/f1.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "F1 Racing",
+                    imageUrl: "wallpapers/other/f12.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "F1 Racing",
+                    imageUrl: "wallpapers/other/f13.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "F1 Racing",
+                    imageUrl: "wallpapers/other/f14.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "F1 Racing",
+                    imageUrl: "wallpapers/other/f15.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                  {
+                    title: "F1 Racing",
+                    imageUrl: "wallpapers/other/fb.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 1.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 2.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 3.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 4.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 5.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 6.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 7.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 8.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 9.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                {
+                    title: "Messi",
+                    imageUrl: "wallpapers/other/messi 10.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                 {
+                    title: "Michael jackson",
+                    imageUrl: "wallpapers/other/mj1.jpg",
+                    resolution: "4K",
+                    size: "2.2MB"
+                },
+                    {
+                        title: "Michael jackson",
+                        imageUrl: "wallpapers/other/mj2.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                    {
+                        title: "Michael jackson",
+                        imageUrl: "wallpapers/other/mj3.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                    {
+                        title: "Michael jackson",
+                        imageUrl: "wallpapers/other/mj4.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                    {
+                        title: "Michael jackson",
+                        imageUrl: "wallpapers/other/mj5.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                    {
+                        title: "Michael jackson",
+                        imageUrl: "wallpapers/other/mj6.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                    {
+                        title: "Michael jackson",
+                        imageUrl: "wallpapers/other/mj7.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                    {
+                        title: "Michael jackson",
+                        imageUrl: "wallpapers/other/mj8.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                    {
+                        title: "Michael jackson",
+                        imageUrl: "wallpapers/other/mj9.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Ratatouille",
+                        imageUrl: "wallpapers/other/rat.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Rick and Morty",
+                        imageUrl: "wallpapers/other/rm 1.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Rick and Morty",
+                        imageUrl: "wallpapers/other/rm2.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Rick and Morty",
+                        imageUrl: "wallpapers/other/rm3.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Rick and Morty",
+                        imageUrl: "wallpapers/other/rm 1.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Rick and Morty",
+                        imageUrl: "wallpapers/other/rm5.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                      {
+                        title: "Rick and Morty",
+                        imageUrl: "wallpapers/other/rm 1.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                    {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp1.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp2.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp1.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp4.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp5.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp6.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp7.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                        {
+                            title: "Spiderman",
+                            imageUrl: "wallpapers/other/sp8.jpg",
+                            resolution: "4K",
+                            size: "2.2MB"
+                        },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp9.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    }, 
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp10.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },   
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp11.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp14.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp15.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp16.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                        {
+                            title: "Spiderman",
+                            imageUrl: "wallpapers/other/sp17.jpg",
+                            resolution: "4K",
+                            size: "2.2MB"
+                        },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp18.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },  
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp18.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },  
+                        {
+                            title: "Spiderman",
+                            imageUrl: "wallpapers/other/sp19.jpg",
+                            resolution: "4K",
+                            size: "2.2MB"
+                        },
+                         {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp20.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp21.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp22.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp23.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp24.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp25.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp26.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                    {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp27.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp28.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp29.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     {
+                        title: "Spiderman",
+                        imageUrl: "wallpapers/other/sp30.jpg",
+                        resolution: "4K",
+                        size: "2.2MB"
+                    },
+                     
+
+
+
+
+
             ]
         };
+
         // Auth functions
         async function signUp() {
             const email = document.getElementById('signup-email').value;
@@ -968,6 +1850,17 @@
             document.getElementById(`${tab}-form`).classList.add('active');
             
             document.getElementById('auth-error').style.display = 'none';
+            
+            // Reset password fields to hidden when switching tabs
+            if (tab === 'signin') {
+                document.getElementById('signin-password').type = 'password';
+                document.getElementById('signin-toggle').classList.remove('fa-eye-slash');
+                document.getElementById('signin-toggle').classList.add('fa-eye');
+            } else {
+                document.getElementById('signup-password').type = 'password';
+                document.getElementById('signup-toggle').classList.remove('fa-eye-slash');
+                document.getElementById('signup-toggle').classList.add('fa-eye');
+            }
         }
 
         function openAuthModal() {
@@ -1126,20 +2019,24 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
             // Check auth state on load
-            supabase.auth.getSession().then(({ data: { session } }) => {
-                updateAuthUI(!!session);
-                loadAllWallpapers();
-                updateDownloadButtons();
-            });
-
-            // Listen for auth state changes
-            supabase.auth.onAuthStateChange((event, session) => {
-                updateAuthUI(!!session);
-                if (event === 'SIGNED_IN') {
+            if (supabase) {
+                supabase.auth.getSession().then(({ data: { session } }) => {
+                    updateAuthUI(!!session);
                     loadAllWallpapers();
                     updateDownloadButtons();
-                }
-            });
+                });
+
+                // Listen for auth state changes
+                supabase.auth.onAuthStateChange((event, session) => {
+                    updateAuthUI(!!session);
+                    if (event === 'SIGNED_IN') {
+                        loadAllWallpapers();
+                        updateDownloadButtons();
+                    }
+                });
+            } else {
+                loadAllWallpapers();
+            }
 
             // Close modals on outside click
             document.getElementById('detailModal').addEventListener('click', function(event) {
@@ -1172,6 +2069,9 @@
 
         function loadAllWallpapers() {
             loadWallpapers('cars', 'cars-grid');
+            loadWallpapers('bikes', 'bikes-grid');
+            loadWallpapers('planes', 'planes-grid');
+            loadWallpapers('other', 'other-grid');
         }
     </script>
 </body>
