@@ -8,7 +8,7 @@ const APP_SHELL_FILES = [
     '/',
     '/index.html',
     '/manifest.json',
-    '/icon.svg'
+    '/Icon 1.svg'
 ];
 
 // Install: pre-cache the app shell so the UI loads instantly (and offline).
