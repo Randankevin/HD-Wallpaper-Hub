@@ -1,3 +1,0 @@
-﻿User-agent: *
-Allow: /
-Sitemap: https://hd-wallpaper-hub.onrender.com/sitemap.xml
