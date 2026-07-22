@@ -1,0 +1,46 @@
+{
+  "name": "HD Wallpaper Hub",
+  "short_name": "Wallpaper Hub",
+  "description": "Free HD wallpapers for cars, bikes, sports, and cool stuff for guys. Browse, favorite, and download in one tap.",
+  "id": "/",
+  "start_url": "/?source=pwa",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
+  "orientation": "portrait-primary",
+  "background_color": "#0a0a0a",
+  "theme_color": "#1a1a1a",
+  "categories": ["personalization", "photo", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Cars",
+      "short_name": "Cars",
+      "description": "Jump straight to car wallpapers",
+      "url": "/?source=pwa#cars",
+      "icons": [{ "src": "/icon.svg", "sizes": "512x512" }]
+    },
+    {
+      "name": "Favorites",
+      "short_name": "Favorites",
+      "description": "See your saved wallpapers",
+      "url": "/?source=pwa#favorites",
+      "icons": [{ "src": "/icon.svg", "sizes": "512x512" }]
+    }
+  ]
+}
