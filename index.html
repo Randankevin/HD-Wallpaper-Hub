@@ -1,0 +1,2284 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="2ATTZUXJn1s-caMBw6W2lL8b8Ncj3o6YmSaymjYbk-0" />
+    <!-- Basic Meta Tags -->
+    <title>HD Wallpaper Hub | Free HD Wallpapers for Cars, Bikes, Sports & Cool Stuff for Guys</title>
+    <meta name="description" content="Download free HD wallpapers for cars, bikes, sports, gaming, and cool stuff for guys. High-quality wallpapers for mobile and desktop backgrounds. Updated daily.">
+    <meta name="keywords" content="HD wallpapers, car wallpapers, bike wallpapers, sports wallpapers, gaming wallpapers, cool wallpapers, men wallpapers, mobile wallpapers, desktop backgrounds, free wallpapers">
+    <meta name="author" content="HD Wallpaper Hub">
+    <link rel="canonical" href="https://hd-wallpaper-hub.onrender.com/">
+
+<!-- Open Graph (Facebook/Twitter/Social Media) -->
+    <meta property="og:title" content="HD Wallpaper Hub | Free HD Wallpapers for Guys">
+    <meta property="og:description" content="Download free HD wallpapers for cars, bikes, sports, gaming, and cool stuff for guys">
+    <meta property="og:image" content="https://hd-wallpaper-hub.onrender.com/wallpapers/cars/amg-benz.jpg">
+    <meta property="og:url" content="https://hd-wallpaper-hub.onrender.com/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="HD Wallpaper Hub">
+    <meta property="og:locale" content="en_US">
+
+<!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="HD Wallpaper Hub | Free HD Wallpapers for Guys">
+    <meta name="twitter:description" content="Download free HD wallpapers for cars, bikes, sports, gaming, and cool stuff">
+    <meta name="twitter:image" content="https://hd-wallpaper-hub.onrender.com/wallpapers/cars/amg-benz.jpg">
+    <meta name="twitter:site" content="@HDWallpaperHub">
+    <meta name="twitter:creator" content="@HDWallpaperHub">
+
+<!-- Additional SEO Tags -->
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="rating" content="general">
+    <meta name="distribution" content="global">
+
+<!-- Mobile Optimization -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#1a1a1a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- PWA / App Links -->
+    <meta name="application-name" content="HD Wallpaper Hub">
+    <meta name="apple-mobile-web-app-title" content="Wallpaper Hub">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="apple-touch-icon" href="/icon.svg">
+
+<!-- Structured Data for Categories (Add to your pages) -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "HD Wallpaper Hub",
+  "url": "https://hd-wallpaper-hub.onrender.com",
+  "description": "Free HD wallpapers download for cars, bikes, sports, gaming, and cool stuff for guys"
+}
+</script>
+    <!-- Add a link to a favicon to prevent 404 error -->
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Responsive root font size for better readability on phones */
+        html {
+            font-size: clamp(18px, 4.5vw, 22px);
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* Ensure body text uses the root font size */
+        body {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Make interactive elements meet touch-target recommendations */
+        button, .auth-btn, .auth-submit-btn, .nav-btn, .cta-button, .download-btn {
+            min-height: 48px;
+            min-width: 48px;
+            padding: clamp(0.6rem, 2vw, 1rem) clamp(1rem, 3vw, 1.5rem);
+        }
+
+        body {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 50%, #000000 100%);
+            color: #ffffff;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(220, 20, 60, 0.15);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+
+        /* Search Container */
+        .search-container {
+            position: relative;
+            width: 300px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 40px 12px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            border-radius: 25px;
+            color: #ffffff;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .search-box::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .search-box:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(220, 20, 60, 0.6);
+            box-shadow: 0 0 15px rgba(220, 20, 60, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.6);
+            pointer-events: none;
+        }
+
+        /* Auth Section */
+        .auth-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .auth-btn {
+            background: rgba(220, 20, 60, 0.3);
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #ffffff;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .auth-btn:hover {
+            background: rgba(220, 20, 60, 0.5);
+            border-color: rgba(220, 20, 60, 0.8);
+            transform: translateY(-2px);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 12px;
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 40px 0 50px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 900;
+            margin: 0 0 15px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 16px;
+            opacity: 0.9;
+            margin: 0 0 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            color: #ffffff;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.6);
+        }
+
+        /* Wallpapers Section */
+        .wallpapers-section {
+            background: rgba(0, 0, 0, 0.4);
+            padding: 50px 0;
+            margin: 20px 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(220, 20, 60, 0.2);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0 0 40px;
+            color: #ffffff;
+        }
+
+        .wallpaper-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .wallpaper-card {
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(220, 20, 60, 0.3);
+            cursor: pointer;
+        }
+
+        .wallpaper-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(220, 20, 60, 0.3);
+            background: rgba(0, 0, 0, 0.8);
+            border-color: rgba(220, 20, 60, 0.6);
+        }
+
+        .wallpaper-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .wallpaper-card:hover .wallpaper-image {
+            transform: scale(1.05);
+        }
+
+        .wallpaper-info {
+            padding: 25px;
+        }
+
+        .wallpaper-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 0 0 8px;
+            color: #ffffff;
+        }
+
+        .wallpaper-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        .download-btn {
+            background: rgba(220, 20, 60, 0.4);
+            border: 1px solid rgba(220, 20, 60, 0.6);
+            padding: 8px 16px;
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            background: rgba(220, 20, 60, 0.7);
+            border-color: rgba(220, 20, 60, 0.9);
+        }
+
+        .download-btn.locked {
+            background: rgba(128, 128, 128, 0.4);
+            border-color: rgba(128, 128, 128, 0.6);
+            cursor: not-allowed;
+        }
+
+        .download-btn.locked:hover {
+            background: rgba(128, 128, 128, 0.6);
+        }
+
+        /* Detail View Modal */
+        .detail-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .detail-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: 2% auto;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            border: 2px solid rgba(220, 20, 60, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(220, 20, 60, 0.1);
+            border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+        }
+
+        .detail-title {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .close-btn {
+            background: rgba(220, 20, 60, 0.3);
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: rgba(220, 20, 60, 0.5);
+            border-color: rgba(220, 20, 60, 0.8);
+        }
+
+        .detail-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .detail-image {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .detail-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(220, 20, 60, 0.1);
+            border-top: 1px solid rgba(220, 20, 60, 0.3);
+            gap: 10px;
+        }
+
+        .detail-nav-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: rgba(220, 20, 60, 0.4);
+            border: 1px solid rgba(220, 20, 60, 0.6);
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            background: rgba(220, 20, 60, 0.7);
+            border-color: rgba(220, 20, 60, 0.9);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .detail-meta {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .detail-download-btn {
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 15px;
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .detail-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+        }
+
+        .detail-download-btn.locked {
+            background: linear-gradient(45deg, #666, #888);
+            cursor: not-allowed;
+        }
+
+        .detail-download-btn.locked:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* Auth Modal */
+        .auth-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .auth-content {
+            position: relative;
+            max-width: 400px;
+            margin: 5% auto;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 20px;
+            border: 2px solid rgba(220, 20, 60, 0.5);
+            overflow: hidden;
+            padding: 32px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-title {
+            font-size: clamp(1.4rem, 5vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .auth-subtitle {
+            opacity: 0.7;
+            margin-bottom: 20px;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .auth-tab.active {
+            opacity: 1;
+            border-bottom: 2px solid #dc143c;
+        }
+
+        .auth-form {
+            display: none;
+        }
+
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 14px 45px 14px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: rgba(220, 20, 60, 0.8);
+            box-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 12px;
+            top: 38px;
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            padding: 4px;
+            transition: color 0.3s ease;
+        }
+
+        .password-toggle:hover {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .auth-submit-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+            min-height: 50px;
+        }
+
+        .auth-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+        }
+
+        .auth-switch {
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        .auth-switch a {
+            color: #dc143c;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .auth-error {
+            color: #ff4444;
+            text-align: center;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Load More / "More" button */
+        .load-more-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .load-more-btn {
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border: none;
+            padding: 14px 40px;
+            border-radius: 30px;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(220, 20, 60, 0.45);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .load-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(220, 20, 60, 0.65);
+            background: linear-gradient(45deg, #e8244f, #c92a44);
+        }
+
+        .load-more-btn:active {
+            transform: translateY(-1px);
+        }
+
+        .load-more-btn .count {
+            opacity: 0.85;
+            font-weight: 500;
+        }
+
+        /* Section header row with count badge */
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 0 0 30px;
+            flex-wrap: wrap;
+        }
+
+        .section-header .section-title {
+            margin: 0;
+        }
+
+        .section-count {
+            background: rgba(220, 20, 60, 0.25);
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Mobile category quick-nav (chips) */
+        .category-chips {
+            display: none;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 12px 20px;
+            scrollbar-width: none;
+        }
+
+        .category-chips::-webkit-scrollbar { display: none; }
+
+        .category-chip {
+            flex: 0 0 auto;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(220, 20, 60, 0.35);
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+        }
+
+        .category-chip.active,
+        .category-chip:hover {
+            background: rgba(220, 20, 60, 0.5);
+            border-color: rgba(220, 20, 60, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .category-chips {
+                display: flex;
+            }
+        }
+
+        /* Favorite heart toggle */
+        .favorite-btn {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            z-index: 2;
+        }
+
+        .favorite-btn:hover {
+            transform: scale(1.1);
+            background: rgba(0, 0, 0, 0.75);
+        }
+
+        .favorite-btn.active {
+            color: #dc143c;
+            border-color: rgba(220, 20, 60, 0.7);
+        }
+
+        .favorite-btn.active i {
+            font-weight: 900;
+        }
+
+        .wallpaper-card {
+            position: relative;
+        }
+
+        .detail-favorite-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .detail-favorite-btn.active {
+            color: #dc143c;
+            border-color: rgba(220, 20, 60, 0.7);
+            background: rgba(220, 20, 60, 0.15);
+        }
+
+        .detail-favorite-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            opacity: 0.7;
+            font-size: 15px;
+        }
+
+        /* Install App banner */
+        .install-banner {
+            display: none;
+            position: fixed;
+            left: 16px;
+            right: 16px;
+            bottom: 16px;
+            z-index: 500;
+            background: rgba(20, 20, 20, 0.95);
+            border: 1px solid rgba(220, 20, 60, 0.5);
+            backdrop-filter: blur(16px);
+            border-radius: 16px;
+            padding: 14px 16px;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .install-banner.show {
+            display: flex;
+        }
+
+        .install-banner-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            flex-shrink: 0;
+        }
+
+        .install-banner-text {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .install-banner-text strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .install-banner-text span {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .install-banner-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .install-btn {
+            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            border: none;
+            padding: 9px 16px;
+            border-radius: 20px;
+            color: #ffffff;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .install-dismiss-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 18px;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: rgba(220, 20, 60, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 400;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.25s ease;
+        }
+
+        .back-to-top.show {
+            display: flex;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .load-more-btn {
+                padding: 13px 32px;
+                font-size: 14px;
+                width: 100%;
+                max-width: 320px;
+                justify-content: center;
+            }
+
+            .section-header {
+                margin: 0 0 20px;
+            }
+
+            .section-count {
+                font-size: 12px;
+                padding: 3px 10px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading-image {
+            background: linear-gradient(90deg, #222 25%, #333 50%, #222 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* Footer */
+        .footer {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 60px 0 40px;
+            margin-top: 80px;
+            text-align: center;
+            border-top: 1px solid rgba(220, 20, 60, 0.3);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .search-container {
+                width: 100%;
+                order: 3;
+                margin-top: 15px;
+            }
+
+            .logo {
+                font-size: 20px;
+            }
+
+            .hero {
+                padding: 25px 0 30px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+                margin: 0 0 10px;
+            }
+
+            .hero p {
+                font-size: 14px;
+                margin: 0 0 15px;
+            }
+
+            .cta-button {
+                padding: 10px 24px;
+                font-size: 13px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                margin: 0 0 25px;
+            }
+
+            .wallpapers-section {
+                padding: 30px 0;
+                margin: 15px 10px;
+                border-radius: 15px;
+            }
+
+            .wallpaper-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                margin-bottom: 25px;
+            }
+
+            .wallpaper-image {
+                height: 150px;
+            }
+
+            .wallpaper-info {
+                padding: 12px;
+            }
+
+            .wallpaper-title {
+                font-size: 14px;
+                margin: 0 0 5px;
+            }
+
+            .wallpaper-meta {
+                font-size: 12px;
+            }
+
+            .download-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+
+            .detail-content {
+                max-width: 95%;
+                max-height: 95%;
+                margin: 5% auto;
+                border-radius: 15px;
+            }
+
+            .detail-header {
+                padding: 15px;
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+            }
+
+            .detail-title {
+                font-size: 18px;
+                flex: 1;
+            }
+
+            .close-btn {
+                align-self: flex-end;
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+
+            .detail-image {
+                max-height: 50vh;
+            }
+
+            .detail-footer {
+                flex-wrap: wrap;
+                padding: 12px;
+                gap: 8px;
+                justify-content: center;
+            }
+
+            .detail-meta {
+                font-size: 13px;
+                order: 2;
+                width: 100%;
+                text-align: center;
+            }
+
+            .detail-nav-buttons {
+                order: 1;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .detail-download-btn {
+                order: 3;
+                padding: 10px 20px;
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .nav-btn {
+                padding: 8px 12px;
+                font-size: 12px;
+                flex: 1;
+                justify-content: center;
+            }
+
+            .auth-content {
+                max-width: 90%;
+                margin: 10% auto;
+                padding: 24px;
+                border-radius: 15px;
+            }
+
+            .auth-header {
+                margin-bottom: 22px;
+            }
+
+            .auth-title {
+                font-size: 1.4rem;
+            }
+
+            .auth-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .auth-tab {
+                padding: 13px;
+                font-size: 0.95rem;
+            }
+
+            .form-group {
+                margin-bottom: 16px;
+            }
+
+            .form-group label {
+                font-size: 0.95rem;
+                margin-bottom: 7px;
+            }
+
+            .form-group input {
+                padding: 12px 40px 12px 12px;
+                font-size: 1rem;
+            }
+
+            .password-toggle {
+                right: 10px;
+                top: 36px;
+            }
+
+            .auth-submit-btn {
+                padding: 13px;
+                font-size: 1rem;
+                margin-bottom: 12px;
+            }
+
+            .auth-switch {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 480px) {
+            html {
+                font-size: clamp(20px, 5vw, 24px);
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 12px;
+                margin: 0 0 12px;
+            }
+
+            .cta-button {
+                padding: 8px 16px;
+                font-size: 12px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                margin: 0 0 20px;
+            }
+
+            .wallpaper-grid {
+                grid-template-columns: 2fr 1fr;
+                gap: 10px;
+            }
+
+            .wallpaper-image {
+                height: 120px;
+            }
+
+            .detail-header {
+                padding: 12px;
+            }
+
+            .detail-title {
+                font-size: 16px;
+            }
+
+            .close-btn {
+                padding: 6px 10px;
+            }
+
+            .detail-image {
+                max-height: 40vh;
+            }
+
+            .detail-footer {
+                padding: 10px;
+            }
+
+            .nav-btn {
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+
+            .auth-content {
+                padding: 16px;
+                max-width: 95%;
+            }
+
+            .auth-title {
+                font-size: 1.6rem;
+                margin-bottom: 12px;
+            }
+
+            .auth-subtitle {
+                font-size: 1rem;
+                margin-bottom: 16px;
+            }
+
+            .auth-tab {
+                padding: 14px 10px;
+                font-size: 1rem;
+                font-weight: 600;
+            }
+
+            .form-group {
+                margin-bottom: 18px;
+            }
+
+            .form-group label {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+
+            .form-group input {
+                font-size: 1.1rem;
+                padding: 14px 40px 14px 12px;
+                min-height: 48px;
+            }
+
+            .password-toggle {
+                right: 10px;
+                top: 34px;
+            }
+
+            .auth-submit-btn {
+                padding: 14px;
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+                min-height: 50px;
+            }
+
+            .auth-switch {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="/" class="logo">
+                    <i class="fas fa-layer-group"></i> Wallpapers
+                </a>
+                <div class="search-container">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="text" id="search-input" class="search-box" placeholder="Search wallpapers...">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#cars">Cars</a></li>
+                    <li><a href="#nicolas-maduro">Nicolas Maduro</a></li>
+                    <li><a href="#other">Other</a></li>
+                    <li><a href="#favorites">Favorites</a></li>
+                </ul>
+                <div class="auth-section" id="auth-section">
+                    <button class="auth-btn" onclick="openAuthModal()" id="sign-in-btn">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </div>
+            </nav>
+        </div>
+        <div class="category-chips" id="category-chips">
+            <a href="#cars" class="category-chip">Cars</a>
+            <a href="#nicolas-maduro" class="category-chip">Nicolas Maduro</a>
+            <a href="#other" class="category-chip">Other</a>
+            <a href="#favorites" class="category-chip">Favorites</a>
+        </div>
+    </header>
+
+    <!-- Detail View Modal -->
+    <div class="detail-modal" id="detail-modal">
+        <div class="detail-content">
+            <div class="detail-header">
+                <h2 class="detail-title" id="detail-title">Wallpaper Title</h2>
+                <button class="close-btn" onclick="closeDetail()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="detail-image-container">
+                <img id="detail-image" class="detail-image" src="" alt="Wallpaper" />
+            </div>
+            <div class="detail-footer">
+                <div class="detail-nav-buttons">
+                    <button class="nav-btn" id="prev-btn" onclick="showPreviousImage()">
+                        <i class="fas fa-chevron-left"></i> Prev
+                    </button>
+                    <button class="nav-btn" id="next-btn" onclick="showNextImage()">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <button class="detail-favorite-btn" id="detail-favorite-btn" onclick="toggleDetailFavorite()">
+                        <i class="fas fa-heart"></i> Save
+                    </button>
+                </div>
+                <div class="detail-meta">
+                    <div id="detail-resolution">3840 x 2160</div>
+                    <div id="detail-size">4.2 MB</div>
+                </div>
+                <a id="detail-download-link" class="detail-download-btn locked" onclick="handleDetailDownload()" href="#">
+                    <i class="fas fa-download"></i> Download
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div class="auth-modal" id="auth-modal">
+        <div class="auth-content">
+            <div class="auth-header">
+                <h2 class="auth-title">Welcome</h2>
+                <p class="auth-subtitle">Sign in or create an account to download wallpapers</p>
+            </div>
+
+            <div class="auth-tabs">
+                <div class="auth-tab active" onclick="switchAuthTab('signin')">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </div>
+                <div class="auth-tab" onclick="switchAuthTab('signup')">
+                    <i class="fas fa-user-plus"></i> Sign Up
+                </div>
+            </div>
+
+            <!-- Sign In Form -->
+            <form class="auth-form active" id="signin-form" onsubmit="signIn(event)">
+                <div class="form-group">
+                    <label for="signin-email">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input type="email" id="signin-email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signin-password">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <input type="password" id="signin-password" placeholder="••••••••" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('signin-password', 'signin-toggle')">
+                        <i class="fas fa-eye" id="signin-toggle"></i>
+                    </button>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">
+                    Sign In
+                </button>
+
+                <div class="auth-error" id="signin-error"></div>
+            </form>
+
+            <!-- Sign Up Form -->
+            <form class="auth-form" id="signup-form" onsubmit="signUp(event)">
+                <div class="form-group">
+                    <label for="signup-email">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input type="email" id="signup-email" placeholder="your@email.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signup-password">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <input type="password" id="signup-password" placeholder="••••••••" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('signup-password', 'signup-toggle')">
+                        <i class="fas fa-eye" id="signup-toggle"></i>
+                    </button>
+                </div>
+
+                <button type="submit" class="auth-submit-btn">
+                    Create Account
+                </button>
+
+                <div class="auth-error" id="signup-error"></div>
+            </form>
+
+            <div class="auth-switch">
+                Don't have an account? <a onclick="switchAuthTab('signup')">Sign Up</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Premium HD Wallpapers</h1>
+            <p>Download stunning high-resolution wallpapers of cars, bikes, planes, and more.</p>
+            <button class="cta-button" onclick="document.getElementById('cars').scrollIntoView({ behavior: 'smooth' })">
+                Browse Wallpapers
+            </button>
+        </div>
+    </section>
+
+    <!-- Wallpapers Sections -->
+    <section class="wallpapers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="cars">Cars</h2>
+                <span class="section-count" id="cars-count"></span>
+            </div>
+            <div class="wallpaper-grid" id="cars-grid"></div>
+            <div class="load-more-container" id="cars-load-more-container"></div>
+        </div>
+    </section>
+
+    <section class="wallpapers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="nicolas-maduro">Nicolas Maduro</h2>
+                <span class="section-count" id="nicolas-maduro-count"></span>
+            </div>
+            <div class="wallpaper-grid" id="nicolas-maduro-grid"></div>
+            <div class="load-more-container" id="nicolas-maduro-load-more-container"></div>
+        </div>
+    </section>
+
+    <section class="wallpapers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="other">Other</h2>
+                <span class="section-count" id="other-count"></span>
+            </div>
+            <div class="wallpaper-grid" id="other-grid"></div>
+            <div class="load-more-container" id="other-load-more-container"></div>
+        </div>
+    </section>
+
+    <section class="wallpapers-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="favorites"><i class="fas fa-heart" style="color:#dc143c;"></i> Favorites</h2>
+                <span class="section-count" id="favorites-count"></span>
+            </div>
+            <div class="wallpaper-grid" id="favorites-grid"></div>
+        </div>
+    </section>
+
+    <!-- Install App Banner -->
+    <div class="install-banner" id="install-banner">
+        <img src="/icon.svg" alt="App icon" class="install-banner-icon">
+        <div class="install-banner-text">
+            <strong>Install Wallpaper Hub</strong>
+            <span>Add to your home screen for full-screen, offline browsing</span>
+        </div>
+        <div class="install-banner-actions">
+            <button class="install-btn" id="install-btn" onclick="installApp()">Install</button>
+            <button class="install-dismiss-btn" onclick="dismissInstallBanner()" aria-label="Dismiss">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Wallpapers For The Boys. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p>Premium wallpapers for your desktop and mobile devices.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Authentication State
+        let isUserSignedIn = false;
+        let currentUser = null;
+
+        // Wallpaper Data
+        const wallpapers = {
+            cars: [
+                { name: 'amg-benz.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'beamer.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'Black & Red SRT.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'Black and Red supra.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'Black and Yellow GTR.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'Black Benz.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'bmw b&r.jpg', resolution: '3840x2160', size: '5.4 MB' },
+                { name: 'bmw m4.jpg', resolution: '3840x2160', size: '5.0 MB' }, // This was a duplicate of m4.jpg
+                { name: 'bmw side.jpg', resolution: '3840x2160', size: '4.8 MB' }, // This was a duplicate of m4.jpg
+                { name: 'bmw white.jpg', resolution: '3840x2160', size: '5.2 MB' }, // This was a duplicate of m4.jpg
+                { name: 'bmw yellow.jpg', resolution: '3840x2160', size: '4.9 MB' }, // This was a duplicate of m4.jpg
+                { name: 'bumblebee SRT.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'cream GTR.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'Dodge Charger.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'Dark grey GTR.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'Dark Red Hellcat.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'ferrari.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'Grey-White GTR.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'gtr.jpg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'lambo.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'lm.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'm4.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'Mad GTR.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'pinkish white mustang.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'porshe 1.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'porshe.jpg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'Red & Grey GTR.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'Red & Grey SRT.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'red and black mustang.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'red bm.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'Red gtr.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'Reddish-grey SRT.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'roadster.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'shelby.jpg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'SRT HELLCAT.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'SRT.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'supra.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'white dogde.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'White GTR.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'wm4.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'Yellow GTR.jpg', resolution: '3840x2160', size: '4.9 MB' }
+            ],
+            'Nicolas Maduro': [
+                { name: 'nm1.jpeg', resolution: '3840x2160', size: '5.4 MB' },
+                { name: 'nm2.jpeg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'nm3.jpeg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'nm4.jpeg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'nm5.jpeg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'nm6.jpeg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'nm7.jpeg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'nm8.jpeg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'nm9.jpeg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'nm10.jpeg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'nm11.jpeg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'nm12.jpeg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'nm13.jpeg', resolution: '3840x2160', size: '4.7 MB' }
+            ],
+            other: [
+                { name: 'a2.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'a3.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'a4.jpg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'a5.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'a6.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'a7.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'a8.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'a9.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'a10.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'a11.jpg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'bm2.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'bm3.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'bm4.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'bm5.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'bm6.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'bm7.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'c71.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'c72.jpg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'c73.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'c74.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'c75.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'c78.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'c79.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'c710.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'j19.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'j20.jpg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'j22.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'j23.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'mj1.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'mj2.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'mj3.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'mj4.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'mj5.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'mj6.jpg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'mj7.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'mj8.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'mj9.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'sp18.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'sp19.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'sp20.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'sp21.jpg', resolution: '3840x2160', size: '4.9 MB' },      
+                { name: 'sp22.jpg', resolution: '3840x2160', size: '5.2 MB' },
+                { name: 'sp23.jpg', resolution: '3840x2160', size: '4.8 MB' },
+                { name: 'sp24.jpg', resolution: '3840x2160', size: '5.0 MB' },
+                { name: 'sp25.jpg', resolution: '3840x2160', size: '4.7 MB' },
+                { name: 'sp26.jpg', resolution: '3840x2160', size: '5.3 MB' },
+                { name: 'sp27.jpg', resolution: '3840x2160', size: '4.6 MB' },
+                { name: 'sp28.jpg', resolution: '3840x2160', size: '5.1 MB' },
+                { name: 'sp29.jpg', resolution: '3840x2160', size: '4.9 MB' },
+                { name: 'sp30.jpg', resolution: '3840x2160', size: '5.2 MB' },           
+            ]
+        };
+
+        // Pagination State
+        // Show fewer cards up front (especially on phones) so every category
+        // is visible on the page without one section swallowing the screen.
+        function getInitialLoadCount() {
+            if (window.innerWidth <= 480) return 4;
+            if (window.innerWidth <= 768) return 6;
+            return 12;
+        }
+        function getLoadMoreCount() {
+            return window.innerWidth <= 768 ? 8 : 12;
+        }
+        const categoryState = {
+            'cars': { loaded: 0 },
+            'nicolas-maduro': { loaded: 0 },
+            'other': { loaded: 0 }
+        };
+
+
+        function formatCategoryLabel(category) {
+            if (!category) return '';
+            if (category === 'nicolas-maduro') return 'Nicolas Maduro';
+            return category
+                .replace(/[-_]+/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .replace(/\b\w/g, (char) => char.toUpperCase());
+        }
+
+        function formatAltText(filename, category) {
+            const baseName = filename.replace(/\.[^/.]+$/, '');
+            const cleanName = baseName.replace(/\s+/g, ' ').trim() || 'Wallpaper';
+            const categoryLabel = formatCategoryLabel(category);
+            return categoryLabel ? `${cleanName} ${categoryLabel} wallpaper` : `${cleanName} wallpaper`;
+        }
+
+        // Create wallpaper card HTML
+        function createWallpaperCard(wallpaper, category) {
+            const pathCategory = category.replace(/\s+/g, '-').toLowerCase();
+            const imageUrl = `wallpapers/${pathCategory}/${wallpaper.name}`;
+            const altText = formatAltText(wallpaper.name, category);
+            const favActive = isFavorite(imageUrl);
+            return `
+                <div class="wallpaper-card" onclick="openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}')">
+                    <button class="favorite-btn ${favActive ? 'active' : ''}" onclick="handleFavoriteClick(event, '${imageUrl}')" aria-label="Save to favorites">
+                        <i class="${favActive ? 'fas' : 'far'} fa-heart"></i>
+                    </button>
+                    <img src="${imageUrl}" alt="${altText}" class="wallpaper-image" loading="lazy" decoding="async" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22300%22 height=%22200%22%3E%3Crect fill=%22%23333%22 width=%22300%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-family=%22Arial%22 font-size=%2216%22 fill=%22%23999%22 text-anchor=%22middle%22 dy=%22.3em%22%3EImage not found%3C/text%3E%3C/svg%3E'">
+                    <div class="wallpaper-info">
+                        <div class="wallpaper-title">${wallpaper.name}</div>
+                        <div class="wallpaper-meta">
+                            <span>${wallpaper.resolution}</span>
+                            <a class="download-btn locked" onclick="handleCardDownload(event, '${imageUrl}', '${wallpaper.name}')">
+                                <i class="fas fa-download"></i> Download
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Favorites (stored locally on this device)
+        function getFavorites() {
+            try {
+                return JSON.parse(localStorage.getItem('wallpaperFavorites') || '[]');
+            } catch (e) {
+                return [];
+            }
+        }
+
+        function isFavorite(imageUrl) {
+            return getFavorites().includes(imageUrl);
+        }
+
+        function toggleFavorite(imageUrl) {
+            let favs = getFavorites();
+            const active = favs.includes(imageUrl);
+            favs = active ? favs.filter(f => f !== imageUrl) : [...favs, imageUrl];
+            localStorage.setItem('wallpaperFavorites', JSON.stringify(favs));
+            return !active;
+        }
+
+        function handleFavoriteClick(event, imageUrl) {
+            event.stopPropagation();
+            const active = toggleFavorite(imageUrl);
+            const btn = event.currentTarget;
+            btn.classList.toggle('active', active);
+            const icon = btn.querySelector('i');
+            icon.classList.toggle('fas', active);
+            icon.classList.toggle('far', !active);
+            renderFavorites();
+            updateSectionCounts();
+        }
+
+        // Flat list of every wallpaper across categories, with metadata
+        function getAllWallpapersFlat() {
+            const list = [];
+            const categories = ['cars', 'nicolas-maduro', 'other'];
+            categories.forEach(category => {
+                const dataCategory = category === 'nicolas-maduro' ? 'Nicolas Maduro' : category;
+                const categoryWallpapers = wallpapers[dataCategory] || [];
+                categoryWallpapers.forEach(wp => {
+                    list.push({
+                        url: `wallpapers/${category}/${wp.name}`,
+                        name: wp.name,
+                        resolution: wp.resolution,
+                        size: wp.size,
+                        category: category,
+                        dataCategory: dataCategory
+                    });
+                });
+            });
+            return list;
+        }
+
+        function renderFavorites() {
+            const grid = document.getElementById('favorites-grid');
+            if (!grid) return;
+            const favs = getFavorites();
+            if (favs.length === 0) {
+                grid.innerHTML = '<div class="empty-state">No favorites yet — tap the heart on any wallpaper to save it here.</div>';
+                return;
+            }
+            const allImages = getAllWallpapersFlat();
+            const favImages = favs
+                .map(url => allImages.find(img => img.url === url))
+                .filter(Boolean);
+            grid.innerHTML = favImages
+                .map(img => createWallpaperCard(
+                    { name: img.name, resolution: img.resolution, size: img.size },
+                    img.dataCategory
+                ))
+                .join('');
+        }
+
+        function updateSectionCounts() {
+            const categories = ['cars', 'nicolas-maduro', 'other'];
+            categories.forEach(category => {
+                const dataCategory = category === 'nicolas-maduro' ? 'Nicolas Maduro' : category;
+                const list = wallpapers[dataCategory] || [];
+                const el = document.getElementById(`${category}-count`);
+                if (el) el.textContent = `${list.length} wallpapers`;
+            });
+            const favEl = document.getElementById('favorites-count');
+            if (favEl) {
+                const favs = getFavorites();
+                favEl.textContent = favs.length ? `${favs.length} saved` : '';
+            }
+        }
+
+        // Load initial or more wallpapers
+        function loadWallpapers(category, isInitialLoad = false) {
+            const grid = document.getElementById(`${category}-grid`);
+            const dataCategory = category === 'nicolas-maduro' ? 'Nicolas Maduro' : category;
+            const wallpapersList = wallpapers[dataCategory];
+            const loadMoreContainer = document.getElementById(`${category}-load-more-container`);
+
+            if (!grid || !wallpapersList) return;
+
+            if (isInitialLoad) {
+                categoryState[category].loaded = 0;
+                grid.innerHTML = '';
+            }
+
+            const perLoad = isInitialLoad ? getInitialLoadCount() : getLoadMoreCount();
+            const start = categoryState[category].loaded;
+            const end = start + perLoad;
+            const wallpapersToLoad = wallpapersList.slice(start, end);
+
+            grid.innerHTML += wallpapersToLoad.map(wp => createWallpaperCard(wp, dataCategory)).join('');
+            categoryState[category].loaded = end;
+
+            // Update the "More" button
+            const remaining = wallpapersList.length - categoryState[category].loaded;
+            if (remaining <= 0) {
+                loadMoreContainer.innerHTML = ''; // All loaded, remove button
+            } else {
+                loadMoreContainer.innerHTML = `
+                    <button class="load-more-btn" onclick="loadWallpapers('${category}')">
+                        More <span class="count">(${remaining} left)</span> <i class="fas fa-chevron-down"></i>
+                    </button>
+                `;
+            }
+        }
+
+        // Initial load for all categories
+        function initializeGrids() {
+            const categories = ['cars', 'nicolas-maduro', 'other'];
+            categories.forEach(category => {
+                loadWallpapers(category, true);
+            });
+            updateSectionCounts();
+            renderFavorites();
+        }
+
+        // Search functionality
+        function searchWallpapers(query) {
+            const categories = ['cars', 'nicolas-maduro', 'other'];
+            const searchTerm = query.toLowerCase().trim();
+            const isSearching = searchTerm.length > 0;
+
+            categories.forEach(category => {
+                const grid = document.getElementById(`${category}-grid`);
+                // Use the original category name (with space) to access the data object
+                const dataCategory = category === 'nicolas-maduro' ? 'Nicolas Maduro' : category;
+                const wallpapersList = wallpapers[dataCategory];
+                
+                if (!grid || !wallpapersList) return;
+                
+                const loadMoreContainer = document.getElementById(`${category}-load-more-container`);
+                if (loadMoreContainer) {
+                    loadMoreContainer.style.display = isSearching ? 'none' : 'block';
+                }
+
+                if (isSearching) {
+                    // Filter wallpapers based on search term
+                    const filtered = wallpapersList.filter(wp => 
+                        wp.name.toLowerCase().includes(searchTerm)
+                    );
+                    grid.innerHTML = filtered.map(wp => createWallpaperCard(wp, dataCategory)).join('');
+                } else {
+                    // If search is cleared, reset to initial state
+                    loadWallpapers(category, true);
+                }
+            });
+        }
+
+        // Handle search input
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeGrids();
+            updateAuthUI();
+            registerServiceWorker();
+            initBackToTop();
+            initCategoryChips();
+            initSwipeGestures();
+            
+            // Add search event listener
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    searchWallpapers(e.target.value);
+                });
+            }
+        });
+
+        // PWA: install to home screen
+        let deferredInstallPrompt = null;
+        window.addEventListener('beforeinstallprompt', function(e) {
+            e.preventDefault();
+            deferredInstallPrompt = e;
+            if (localStorage.getItem('installBannerDismissed') !== 'true') {
+                document.getElementById('install-banner').classList.add('show');
+            }
+        });
+
+        function installApp() {
+            const banner = document.getElementById('install-banner');
+            if (!deferredInstallPrompt) {
+                banner.classList.remove('show');
+                return;
+            }
+            deferredInstallPrompt.prompt();
+            deferredInstallPrompt.userChoice.finally(function() {
+                deferredInstallPrompt = null;
+                banner.classList.remove('show');
+            });
+        }
+
+        function dismissInstallBanner() {
+            document.getElementById('install-banner').classList.remove('show');
+            localStorage.setItem('installBannerDismissed', 'true');
+        }
+
+        window.addEventListener('appinstalled', function() {
+            document.getElementById('install-banner').classList.remove('show');
+        });
+
+        // PWA: register the service worker for offline support
+        function registerServiceWorker() {
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js').catch(function(err) {
+                        console.warn('Service worker registration failed:', err);
+                    });
+                });
+            }
+        }
+
+        // Show a "back to top" button once the user has scrolled down
+        function initBackToTop() {
+            const btn = document.getElementById('back-to-top');
+            if (!btn) return;
+            window.addEventListener('scroll', function() {
+                btn.classList.toggle('show', window.scrollY > 500);
+            }, { passive: true });
+        }
+
+        // Highlight the active category chip on mobile as the user scrolls
+        function initCategoryChips() {
+            const chips = document.querySelectorAll('.category-chip');
+            if (!chips.length || !('IntersectionObserver' in window)) return;
+            const sectionIds = ['cars', 'nicolas-maduro', 'other', 'favorites'];
+            const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        chips.forEach(function(chip) {
+                            chip.classList.toggle('active', chip.getAttribute('href') === `#${entry.target.id}`);
+                        });
+                    }
+                });
+            }, { rootMargin: '-40% 0px -50% 0px' });
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        // Swipe left/right on the detail image to move between wallpapers
+        function initSwipeGestures() {
+            const container = document.querySelector('.detail-image-container');
+            if (!container) return;
+            let touchStartX = 0;
+            container.addEventListener('touchstart', function(e) {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            container.addEventListener('touchend', function(e) {
+                const touchEndX = e.changedTouches[0].screenX;
+                const diff = touchEndX - touchStartX;
+                if (Math.abs(diff) > 50) {
+                    if (diff < 0) {
+                        showNextImage();
+                    } else {
+                        showPreviousImage();
+                    }
+                }
+            }, { passive: true });
+        }
+
+        // Image Navigation State
+        let currentImageIndex = -1;
+        let currentImageList = [];
+        let currentCategory = '';
+
+        // Store all wallpapers in flat list for navigation
+        function buildImageList() {
+            currentImageList = getAllWallpapersFlat().map(img => ({
+                url: img.url,
+                name: img.name,
+                resolution: img.resolution,
+                size: img.size,
+                category: img.category
+            }));
+        }
+
+        function showPreviousImage() {
+            if (currentImageIndex > 0) {
+                currentImageIndex--;
+                displayImage(currentImageIndex);
+            }
+        }
+
+        function showNextImage() {
+            if (currentImageIndex < currentImageList.length - 1) {
+                currentImageIndex++;
+                displayImage(currentImageIndex);
+            }
+        }
+
+        function displayImage(index) {
+            if (index >= 0 && index < currentImageList.length) {
+                const image = currentImageList[index];
+                const detailImage = document.getElementById('detail-image');
+                detailImage.src = image.url;
+                detailImage.alt = formatAltText(image.name, image.category);
+                document.getElementById('detail-title').textContent = image.name;
+                document.getElementById('detail-resolution').textContent = image.resolution;
+                document.getElementById('detail-size').textContent = image.size;
+                
+                const downloadLink = document.getElementById('detail-download-link');
+                downloadLink.href = image.url;
+                downloadLink.download = image.name;
+                downloadLink.classList.remove('locked');
+
+                // Update button states
+                document.getElementById('prev-btn').disabled = index === 0;
+                document.getElementById('next-btn').disabled = index === currentImageList.length - 1;
+
+                // Show position info
+                const positionInfo = document.querySelector('.detail-position');
+                if (positionInfo) {
+                    positionInfo.textContent = `${index + 1} / ${currentImageList.length}`;
+                }
+
+                updateDetailFavoriteButton(isFavorite(image.url));
+            }
+        }
+
+        function updateDetailFavoriteButton(active) {
+            const btn = document.getElementById('detail-favorite-btn');
+            if (!btn) return;
+            btn.classList.toggle('active', active);
+            btn.innerHTML = active
+                ? '<i class="fas fa-heart"></i> Saved'
+                : '<i class="fas fa-heart"></i> Save';
+        }
+
+        function toggleDetailFavorite() {
+            if (currentImageIndex < 0 || !currentImageList[currentImageIndex]) return;
+            const image = currentImageList[currentImageIndex];
+            const active = toggleFavorite(image.url);
+            updateDetailFavoriteButton(active);
+            renderFavorites();
+            updateSectionCounts();
+
+            // Keep any matching card's heart icon in the grid behind the modal in sync
+            document.querySelectorAll(`.favorite-btn[onclick*="${image.url}"]`).forEach(btn => {
+                btn.classList.toggle('active', active);
+                const icon = btn.querySelector('i');
+                if (icon) {
+                    icon.classList.toggle('fas', active);
+                    icon.classList.toggle('far', !active);
+                }
+            });
+        }
+
+        function openDetail(imageUrl, title, resolution, size, category) {
+            if (!isUserSignedIn) {
+                openAuthModal();
+                return;
+            }
+
+            // Build image list if not already built
+            if (currentImageList.length === 0) {
+                buildImageList();
+            }
+
+            // Find current image in list
+            currentImageIndex = currentImageList.findIndex(img => img.url === imageUrl);
+            if (currentImageIndex === -1) {
+                // If exact match not found, create image object and add to list
+                currentImageIndex = currentImageList.length;
+                currentImageList.push({
+                    url: imageUrl,
+                    name: title,
+                    resolution: resolution,
+                    size: size,
+                    category: category
+                });
+            }
+            
+            document.getElementById('detail-modal').style.display = 'flex';
+            displayImage(currentImageIndex);
+        }
+
+        function closeDetail() {
+            document.getElementById('detail-modal').style.display = 'none';
+        }
+
+        // Auth Modal Functions
+        function openAuthModal() {
+            document.getElementById('auth-modal').style.display = 'flex';
+        }
+
+        function closeAuthModal() {
+            document.getElementById('auth-modal').style.display = 'none';
+        }
+
+        function switchAuthTab(tab) {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            
+            event.target.closest('.auth-tab').classList.add('active');
+            document.getElementById(`${tab}-form`).classList.add('active');
+        }
+
+        // Password Toggle Function
+        function togglePassword(passwordFieldId, toggleIconId) {
+            const passwordField = document.getElementById(passwordFieldId);
+            const toggleIcon = document.getElementById(toggleIconId);
+            
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Authentication Functions
+        function signIn(event) {
+            event.preventDefault();
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+            
+            // Demo authentication
+            if (email && password) {
+                isUserSignedIn = true;
+                currentUser = { email };
+                updateAuthUI();
+                closeAuthModal();
+                updateDownloadButtons();
+            }
+        }
+
+        function signUp(event) {
+            event.preventDefault();
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            
+            // Demo authentication
+            if (email && password) {
+                isUserSignedIn = true;
+                currentUser = { email };
+                updateAuthUI();
+                closeAuthModal();
+                updateDownloadButtons();
+            }
+        }
+
+        function signOut() {
+            isUserSignedIn = false;
+            currentUser = null;
+            updateAuthUI();
+            updateDownloadButtons();
+            closeDetail();
+        }
+
+        function updateAuthUI() {
+            const authSection = document.getElementById('auth-section');
+            
+            if (isUserSignedIn && currentUser) {
+                const firstLetter = currentUser.email.charAt(0).toUpperCase();
+                authSection.innerHTML = `
+                    <div class="user-menu">
+                        <div class="user-info">
+                            <div class="user-avatar">${firstLetter}</div>
+                            <div>
+                                <div style="font-size: 12px; opacity: 0.7;">Signed in as</div>
+                                <div style="font-size: 14px;">${currentUser.email}</div>
+                            </div>
+                        </div>
+                        <button class="logout-btn" onclick="signOut()">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </button>
+                    </div>
+                `;
+            } else {
+                authSection.innerHTML = `
+                    <button class="auth-btn" onclick="openAuthModal()">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                `;
+            }
+        }
+
+        function updateDownloadButtons() {
+            const buttons = document.querySelectorAll('.download-btn');
+            buttons.forEach(btn => {
+                if (isUserSignedIn) {
+                    btn.classList.remove('locked');
+                } else {
+                    btn.classList.add('locked');
+                }
+            });
+        }
+
+        // Download Handlers
+        function handleCardDownload(event, imageUrl, filename) {
+            event.stopPropagation();
+            
+            if (!isUserSignedIn) {
+                openAuthModal();
+                return;
+            }
+            
+            downloadImage(imageUrl, filename);
+        }
+
+        function handleDetailDownload() {
+            if (!isUserSignedIn) {
+                openAuthModal();
+                return;
+            }
+            
+            const link = document.getElementById('detail-download-link');
+            link.click();
+        }
+
+        function downloadImage(url, filename) {
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = filename;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Close modal on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeDetail();
+                closeAuthModal();
+            }
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('detail-modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeDetail();
+            }
+        });
+
+        document.getElementById('auth-modal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeAuthModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
+
