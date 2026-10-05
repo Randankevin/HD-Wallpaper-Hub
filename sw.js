@@ -1,17 +1,14 @@
 // HD Wallpaper Hub — Service Worker
 // Bump this on every deploy that changes cached app-shell files.
-const CACHE_VERSION = 'v1';
+const CACHE_VERSION = 'v2';
 const APP_SHELL_CACHE = `wallpaper-hub-shell-${CACHE_VERSION}`;
 const IMAGE_CACHE = `wallpaper-hub-images-${CACHE_VERSION}`;
+const APP_BASE = self.registration.scope;
+const APP_BASE_PATH = new URL(APP_BASE).pathname;
+const APP_SHELL_FILES = ['', 'index.html', 'manifest.json', 'Icon%201.svg']
+    .map((path) => new URL(path, APP_BASE).toString());
+const INDEX_URL = new URL('index.html', APP_BASE).toString();
 
-const APP_SHELL_FILES = [
-    '/',
-    '/index.html',
-    '/manifest.json',
-    '/Icon 1.svg'
-];
-
-// Install: pre-cache the app shell so the UI loads instantly (and offline).
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(APP_SHELL_CACHE)
@@ -20,7 +17,6 @@ self.addEventListener('install', (event) => {
     );
 });
 
-// Activate: drop any caches from older versions.
 self.addEventListener('activate', (event) => {
     event.waitUntil(
         caches.keys().then((keys) =>
@@ -40,9 +36,7 @@ self.addEventListener('fetch', (event) => {
     const url = new URL(request.url);
     if (url.origin !== self.location.origin) return;
 
-    // Wallpaper images: cache-first, so once viewed they're available offline
-    // and repeat visits don't re-download multi-MB files.
-    if (url.pathname.startsWith('/wallpapers/')) {
+    if (url.pathname.startsWith(APP_BASE_PATH + 'wallpapers/')) {
         event.respondWith(
             caches.open(IMAGE_CACHE).then((cache) =>
                 cache.match(request).then((cached) => {
@@ -57,8 +51,6 @@ self.addEventListener('fetch', (event) => {
         return;
     }
 
-    // App shell / HTML: network-first so content updates show up right away,
-    // falling back to cache when offline.
     event.respondWith(
         fetch(request)
             .then((response) => {
@@ -67,7 +59,7 @@ self.addEventListener('fetch', (event) => {
                 return response;
             })
             .catch(() =>
-                caches.match(request).then((cached) => cached || caches.match('/index.html'))
+                caches.match(request).then((cached) => cached || caches.match(INDEX_URL))
             )
     );
 });
