@@ -1432,7 +1432,7 @@
     </header>
 
     <!-- Detail View Modal -->
-    <div class="detail-modal" id="detail-modal">
+    <div class="detail-modal" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
         <div class="detail-content">
             <div class="detail-header">
                 <h2 class="detail-title" id="detail-title">Wallpaper Title</h2>
@@ -1467,11 +1467,11 @@
     </div>
 
     <!-- Auth Modal -->
-    <div class="auth-modal" id="auth-modal">
+    <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
         <div class="auth-content">
             <div class="auth-header">
-                <h2 class="auth-title">Welcome</h2>
-                <p class="auth-subtitle">Sign in or create an account to download wallpapers</p>
+                <h2 class="auth-title" id="auth-title">Welcome</h2>
+                <p class="auth-subtitle">Sign in to personalize your visit. Downloads are free and no account is required.</p>
             </div>
 
             <div class="auth-tabs">
@@ -1880,7 +1880,7 @@
             const altText = formatAltText(wallpaper.name, category);
             const favActive = isFavorite(imageUrl);
             return `
-                <div class="wallpaper-card" onclick="openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}')">
+                <div class="wallpaper-card" role="button" tabindex="0" aria-label="Preview ${wallpaper.name}, ${wallpaper.resolution}" onclick="openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}');}">
                     <button class="favorite-btn ${favActive ? 'active' : ''}" onclick="handleFavoriteClick(event, '${imageUrl}')" aria-label="Save to favorites">
                         <i class="${favActive ? 'fas' : 'far'} fa-heart"></i>
                     </button>
@@ -2140,7 +2140,7 @@
         function initCategoryChips() {
             const chips = document.querySelectorAll('.category-chip');
             if (!chips.length || !('IntersectionObserver' in window)) return;
-            const sectionIds = ['cars', 'nicolas-maduro', 'other', 'favorites'];
+            const sectionIds = ['pc-wallpapers', 'cars', 'nicolas-maduro', 'other', 'favorites'];
             const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
             const observer = new IntersectionObserver(function(entries) {
@@ -2393,14 +2393,7 @@
         }
 
         function updateDownloadButtons() {
-            const buttons = document.querySelectorAll('.download-btn');
-            buttons.forEach(btn => {
-                if (isUserSignedIn) {
-                    btn.classList.remove('locked');
-                } else {
-                    btn.classList.add('locked');
-                }
-            });
+            document.querySelectorAll('.download-btn, .detail-download-btn').forEach(btn => btn.classList.remove('locked'));
         }
 
         // Download Handlers
@@ -2426,6 +2419,14 @@
 
         // Close modal on Escape key
         document.addEventListener('keydown', function(event) {
+            if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+                event.preventDefault();
+                document.getElementById('search-input')?.focus();
+                return;
+            }
+            const detailOpen = document.getElementById('detail-modal').style.display === 'flex';
+            if (detailOpen && event.key === 'ArrowLeft') showPreviousImage();
+            if (detailOpen && event.key === 'ArrowRight') showNextImage();
             if (event.key === 'Escape') {
                 closeDetail();
                 closeAuthModal();
