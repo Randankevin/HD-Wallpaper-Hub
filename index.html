@@ -1880,7 +1880,7 @@
             const altText = formatAltText(wallpaper.name, category);
             const favActive = isFavorite(imageUrl);
             return `
-                <div class="wallpaper-card" role="button" tabindex="0" aria-label="Preview ${wallpaper.name}, ${wallpaper.resolution}" onclick="openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}');}">
+                <div class="wallpaper-card" role="button" tabindex="0" aria-label="Preview ${wallpaper.name}, ${wallpaper.resolution}" onclick="openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}')" onkeydown="if(event.target===event.currentTarget&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}');}">
                     <button class="favorite-btn ${favActive ? 'active' : ''}" onclick="handleFavoriteClick(event, '${imageUrl}')" aria-label="Save to favorites">
                         <i class="${favActive ? 'fas' : 'far'} fa-heart"></i>
                     </button>
