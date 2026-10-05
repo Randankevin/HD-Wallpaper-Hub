@@ -1,46 +1,46 @@
 {
   "name": "HD Wallpaper Hub",
   "short_name": "Wallpaper Hub",
-  "description": "Free HD wallpapers for cars, bikes, sports, and cool stuff for guys. Browse, favorite, and download in one tap.",
-  "id": "/",
-  "start_url": "/?source=pwa",
-  "scope": "/",
+  "description": "Discover and download free widescreen 4K wallpapers for desktop, laptop, and mobile.",
+  "id": "./",
+  "start_url": "./?source=pwa",
+  "scope": "./",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone"],
-  "orientation": "portrait-primary",
-  "background_color": "#0a0a0a",
-  "theme_color": "#1a1a1a",
+  "orientation": "any",
+  "background_color": "#09090d",
+  "theme_color": "#8b5cf6",
   "categories": ["personalization", "photo", "lifestyle"],
   "lang": "en",
   "dir": "ltr",
   "icons": [
     {
-      "src": "/icon.svg",
-      "sizes": "512x512",
+      "src": "./Icon%201.svg",
+      "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/icon.svg",
-      "sizes": "512x512",
+      "src": "./Icon%201.svg",
+      "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "maskable"
     }
   ],
   "shortcuts": [
     {
-      "name": "Cars",
-      "short_name": "Cars",
-      "description": "Jump straight to car wallpapers",
-      "url": "/?source=pwa#cars",
-      "icons": [{ "src": "/icon.svg", "sizes": "512x512" }]
+      "name": "PC Wallpapers",
+      "short_name": "PC Wallpapers",
+      "description": "Browse widescreen wallpapers",
+      "url": "./#pc-wallpapers",
+      "icons": [{ "src": "./Icon%201.svg", "sizes": "any" }]
     },
     {
       "name": "Favorites",
       "short_name": "Favorites",
       "description": "See your saved wallpapers",
-      "url": "/?source=pwa#favorites",
-      "icons": [{ "src": "/icon.svg", "sizes": "512x512" }]
+      "url": "./#favorites",
+      "icons": [{ "src": "./Icon%201.svg", "sizes": "any" }]
     }
   ]
 }

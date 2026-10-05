@@ -1,6 +1,7 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
+    <base href="/HD-Wallpaper-Hub/">
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="2ATTZUXJn1s-caMBw6W2lL8b8Ncj3o6YmSaymjYbk-0" />
     <!-- Basic Meta Tags -->
@@ -8,13 +9,13 @@
     <meta name="description" content="Download free HD wallpapers for cars, bikes, sports, gaming, and cool stuff for guys. High-quality wallpapers for mobile and desktop backgrounds. Updated daily.">
     <meta name="keywords" content="HD wallpapers, car wallpapers, bike wallpapers, sports wallpapers, gaming wallpapers, cool wallpapers, men wallpapers, mobile wallpapers, desktop backgrounds, free wallpapers">
     <meta name="author" content="HD Wallpaper Hub">
-    <link rel="canonical" href="https://hd-wallpaper-hub.onrender.com/">
+    <link rel="canonical" href="https://randankevin.github.io/HD-Wallpaper-Hub/">
 
 <!-- Open Graph (Facebook/Twitter/Social Media) -->
     <meta property="og:title" content="HD Wallpaper Hub | Free HD Wallpapers for Guys">
     <meta property="og:description" content="Download free HD wallpapers for cars, bikes, sports, gaming, and cool stuff for guys">
-    <meta property="og:image" content="https://hd-wallpaper-hub.onrender.com/wallpapers/cars/amg-benz.jpg">
-    <meta property="og:url" content="https://hd-wallpaper-hub.onrender.com/">
+    <meta property="og:image" content="https://randankevin.github.io/HD-Wallpaper-Hub/wallpapers/cars/amg-benz.jpg">
+    <meta property="og:url" content="https://randankevin.github.io/HD-Wallpaper-Hub/">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="HD Wallpaper Hub">
     <meta property="og:locale" content="en_US">
@@ -23,7 +24,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="HD Wallpaper Hub | Free HD Wallpapers for Guys">
     <meta name="twitter:description" content="Download free HD wallpapers for cars, bikes, sports, gaming, and cool stuff">
-    <meta name="twitter:image" content="https://hd-wallpaper-hub.onrender.com/wallpapers/cars/amg-benz.jpg">
+    <meta name="twitter:image" content="https://randankevin.github.io/HD-Wallpaper-Hub/wallpapers/cars/amg-benz.jpg">
     <meta name="twitter:site" content="@HDWallpaperHub">
     <meta name="twitter:creator" content="@HDWallpaperHub">
 
@@ -44,8 +45,8 @@
 <!-- PWA / App Links -->
     <meta name="application-name" content="HD Wallpaper Hub">
     <meta name="apple-mobile-web-app-title" content="Wallpaper Hub">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="apple-touch-icon" href="/icon.svg">
+    <link rel="manifest" href="./manifest.json">
+    <link rel="apple-touch-icon" href="./Icon%201.svg">
 
 <!-- Structured Data for Categories (Add to your pages) -->
     <script type="application/ld+json">
@@ -53,12 +54,12 @@
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "HD Wallpaper Hub",
-  "url": "https://hd-wallpaper-hub.onrender.com",
+  "url": "https://randankevin.github.io/HD-Wallpaper-Hub",
   "description": "Free HD wallpapers download for cars, bikes, sports, gaming, and cool stuff for guys"
 }
 </script>
     <!-- Add a link to a favicon to prevent 404 error -->
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="./Icon%201.svg" type="image/svg+xml">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -103,9 +104,9 @@
 
         /* Header */
         .header {
-            background: rgba(220, 20, 60, 0.15);
+            background: rgba(139, 92, 246, 0.15);
             backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -156,7 +157,7 @@
             width: 100%;
             padding: 12px 40px 12px 16px;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(220, 20, 60, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.3);
             border-radius: 25px;
             color: #ffffff;
             font-size: 14px;
@@ -170,8 +171,8 @@
         .search-box:focus {
             outline: none;
             background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(220, 20, 60, 0.6);
-            box-shadow: 0 0 15px rgba(220, 20, 60, 0.2);
+            border-color: rgba(139, 92, 246, 0.6);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.2);
         }
 
         .search-icon {
@@ -191,8 +192,8 @@
         }
 
         .auth-btn {
-            background: rgba(220, 20, 60, 0.3);
-            border: 1px solid rgba(220, 20, 60, 0.5);
+            background: rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.5);
             padding: 10px 20px;
             border-radius: 25px;
             color: #ffffff;
@@ -202,8 +203,8 @@
         }
 
         .auth-btn:hover {
-            background: rgba(220, 20, 60, 0.5);
-            border-color: rgba(220, 20, 60, 0.8);
+            background: rgba(139, 92, 246, 0.5);
+            border-color: rgba(139, 92, 246, 0.8);
             transform: translateY(-2px);
         }
 
@@ -223,7 +224,7 @@
             width: 32px;
             height: 32px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            background: linear-gradient(45deg, #8b5cf6, #6d28d9);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -272,7 +273,7 @@
         }
 
         .cta-button {
-            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            background: linear-gradient(45deg, #8b5cf6, #6d28d9);
             border: none;
             padding: 12px 30px;
             border-radius: 25px;
@@ -281,12 +282,12 @@
             font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(220, 20, 60, 0.4);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.4);
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(220, 20, 60, 0.6);
+            box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
         }
 
         /* Wallpapers Section */
@@ -296,7 +297,7 @@
             margin: 20px 20px;
             border-radius: 20px;
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(220, 20, 60, 0.2);
+            border: 1px solid rgba(139, 92, 246, 0.2);
         }
 
         .section-title {
@@ -319,15 +320,15 @@
             border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s ease;
-            border: 1px solid rgba(220, 20, 60, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.3);
             cursor: pointer;
         }
 
         .wallpaper-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(220, 20, 60, 0.3);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
             background: rgba(0, 0, 0, 0.8);
-            border-color: rgba(220, 20, 60, 0.6);
+            border-color: rgba(139, 92, 246, 0.6);
         }
 
         .wallpaper-image {
@@ -362,8 +363,8 @@
         }
 
         .download-btn {
-            background: rgba(220, 20, 60, 0.4);
-            border: 1px solid rgba(220, 20, 60, 0.6);
+            background: rgba(139, 92, 246, 0.4);
+            border: 1px solid rgba(139, 92, 246, 0.6);
             padding: 8px 16px;
             border-radius: 15px;
             color: #ffffff;
@@ -376,8 +377,8 @@
         }
 
         .download-btn:hover {
-            background: rgba(220, 20, 60, 0.7);
-            border-color: rgba(220, 20, 60, 0.9);
+            background: rgba(139, 92, 246, 0.7);
+            border-color: rgba(139, 92, 246, 0.9);
         }
 
         .download-btn.locked {
@@ -410,7 +411,7 @@
             margin: 2% auto;
             background: rgba(0, 0, 0, 0.9);
             border-radius: 20px;
-            border: 2px solid rgba(220, 20, 60, 0.5);
+            border: 2px solid rgba(139, 92, 246, 0.5);
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -421,8 +422,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background: rgba(220, 20, 60, 0.1);
-            border-bottom: 1px solid rgba(220, 20, 60, 0.3);
+            background: rgba(139, 92, 246, 0.1);
+            border-bottom: 1px solid rgba(139, 92, 246, 0.3);
         }
 
         .detail-title {
@@ -431,8 +432,8 @@
         }
 
         .close-btn {
-            background: rgba(220, 20, 60, 0.3);
-            border: 1px solid rgba(220, 20, 60, 0.5);
+            background: rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.5);
             padding: 10px 15px;
             border-radius: 10px;
             color: #ffffff;
@@ -442,8 +443,8 @@
         }
 
         .close-btn:hover {
-            background: rgba(220, 20, 60, 0.5);
-            border-color: rgba(220, 20, 60, 0.8);
+            background: rgba(139, 92, 246, 0.5);
+            border-color: rgba(139, 92, 246, 0.8);
         }
 
         .detail-image-container {
@@ -468,8 +469,8 @@
             justify-content: space-between;
             align-items: center;
             padding: 20px;
-            background: rgba(220, 20, 60, 0.1);
-            border-top: 1px solid rgba(220, 20, 60, 0.3);
+            background: rgba(139, 92, 246, 0.1);
+            border-top: 1px solid rgba(139, 92, 246, 0.3);
             gap: 10px;
         }
 
@@ -479,8 +480,8 @@
         }
 
         .nav-btn {
-            background: rgba(220, 20, 60, 0.4);
-            border: 1px solid rgba(220, 20, 60, 0.6);
+            background: rgba(139, 92, 246, 0.4);
+            border: 1px solid rgba(139, 92, 246, 0.6);
             padding: 10px 15px;
             border-radius: 8px;
             color: #ffffff;
@@ -494,8 +495,8 @@
         }
 
         .nav-btn:hover:not(:disabled) {
-            background: rgba(220, 20, 60, 0.7);
-            border-color: rgba(220, 20, 60, 0.9);
+            background: rgba(139, 92, 246, 0.7);
+            border-color: rgba(139, 92, 246, 0.9);
             transform: translateY(-2px);
         }
 
@@ -510,7 +511,7 @@
         }
 
         .detail-download-btn {
-            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            background: linear-gradient(45deg, #8b5cf6, #6d28d9);
             border: none;
             padding: 12px 24px;
             border-radius: 15px;
@@ -525,7 +526,7 @@
 
         .detail-download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
         }
 
         .detail-download-btn.locked {
@@ -557,7 +558,7 @@
             margin: 5% auto;
             background: rgba(0, 0, 0, 0.9);
             border-radius: 20px;
-            border: 2px solid rgba(220, 20, 60, 0.5);
+            border: 2px solid rgba(139, 92, 246, 0.5);
             overflow: hidden;
             padding: 32px;
             max-height: 90vh;
@@ -600,7 +601,7 @@
 
         .auth-tab.active {
             opacity: 1;
-            border-bottom: 2px solid #dc143c;
+            border-bottom: 2px solid #8b5cf6;
         }
 
         .auth-form {
@@ -636,8 +637,8 @@
 
         .form-group input:focus {
             outline: none;
-            border-color: rgba(220, 20, 60, 0.8);
-            box-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+            border-color: rgba(139, 92, 246, 0.8);
+            box-shadow: 0 0 10px rgba(139, 92, 246, 0.3);
         }
 
         .password-toggle {
@@ -658,7 +659,7 @@
 
         .auth-submit-btn {
             width: 100%;
-            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            background: linear-gradient(45deg, #8b5cf6, #6d28d9);
             border: none;
             padding: 16px;
             border-radius: 10px;
@@ -673,7 +674,7 @@
 
         .auth-submit-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(220, 20, 60, 0.4);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
         }
 
         .auth-switch {
@@ -682,7 +683,7 @@
         }
 
         .auth-switch a {
-            color: #dc143c;
+            color: #8b5cf6;
             cursor: pointer;
             text-decoration: none;
         }
@@ -701,7 +702,7 @@
         }
 
         .load-more-btn {
-            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            background: linear-gradient(45deg, #8b5cf6, #6d28d9);
             border: none;
             padding: 14px 40px;
             border-radius: 30px;
@@ -711,7 +712,7 @@
             letter-spacing: 0.3px;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(220, 20, 60, 0.45);
+            box-shadow: 0 8px 24px rgba(139, 92, 246, 0.45);
             display: inline-flex;
             align-items: center;
             gap: 8px;
@@ -719,7 +720,7 @@
 
         .load-more-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(220, 20, 60, 0.65);
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.65);
             background: linear-gradient(45deg, #e8244f, #c92a44);
         }
 
@@ -747,8 +748,8 @@
         }
 
         .section-count {
-            background: rgba(220, 20, 60, 0.25);
-            border: 1px solid rgba(220, 20, 60, 0.5);
+            background: rgba(139, 92, 246, 0.25);
+            border: 1px solid rgba(139, 92, 246, 0.5);
             padding: 4px 14px;
             border-radius: 20px;
             font-size: 14px;
@@ -770,7 +771,7 @@
         .category-chip {
             flex: 0 0 auto;
             background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(220, 20, 60, 0.35);
+            border: 1px solid rgba(139, 92, 246, 0.35);
             color: #ffffff;
             text-decoration: none;
             padding: 8px 16px;
@@ -783,8 +784,8 @@
 
         .category-chip.active,
         .category-chip:hover {
-            background: rgba(220, 20, 60, 0.5);
-            border-color: rgba(220, 20, 60, 0.8);
+            background: rgba(139, 92, 246, 0.5);
+            border-color: rgba(139, 92, 246, 0.8);
         }
 
         @media (max-width: 768px) {
@@ -818,8 +819,8 @@
         }
 
         .favorite-btn.active {
-            color: #dc143c;
-            border-color: rgba(220, 20, 60, 0.7);
+            color: #8b5cf6;
+            border-color: rgba(139, 92, 246, 0.7);
         }
 
         .favorite-btn.active i {
@@ -846,9 +847,9 @@
         }
 
         .detail-favorite-btn.active {
-            color: #dc143c;
-            border-color: rgba(220, 20, 60, 0.7);
-            background: rgba(220, 20, 60, 0.15);
+            color: #8b5cf6;
+            border-color: rgba(139, 92, 246, 0.7);
+            background: rgba(139, 92, 246, 0.15);
         }
 
         .detail-favorite-btn:hover {
@@ -871,7 +872,7 @@
             bottom: 16px;
             z-index: 500;
             background: rgba(20, 20, 20, 0.95);
-            border: 1px solid rgba(220, 20, 60, 0.5);
+            border: 1px solid rgba(139, 92, 246, 0.5);
             backdrop-filter: blur(16px);
             border-radius: 16px;
             padding: 14px 16px;
@@ -913,7 +914,7 @@
         }
 
         .install-btn {
-            background: linear-gradient(45deg, #dc143c, #b91c3c);
+            background: linear-gradient(45deg, #8b5cf6, #6d28d9);
             border: none;
             padding: 9px 16px;
             border-radius: 20px;
@@ -941,7 +942,7 @@
             width: 46px;
             height: 46px;
             border-radius: 50%;
-            background: rgba(220, 20, 60, 0.85);
+            background: rgba(139, 92, 246, 0.85);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: #ffffff;
             display: none;
@@ -998,7 +999,7 @@
             padding: 60px 0 40px;
             margin-top: 80px;
             text-align: center;
-            border-top: 1px solid rgba(220, 20, 60, 0.3);
+            border-top: 1px solid rgba(139, 92, 246, 0.3);
         }
 
         .footer-bottom {
@@ -1309,6 +1310,90 @@
                 font-size: 1rem;
             }
         }
+
+        /* HD Wallpaper Hub refresh: clearer hierarchy, desktop-first browsing, and calm contrast. */
+        html { font-size: 16px; scroll-behavior: smooth; scroll-padding-top: 100px; }
+        body { color: #f7f7fb; background: #09090d; line-height: 1.55; }
+        .container { max-width: 1440px; padding-inline: clamp(18px, 4vw, 56px); }
+        .header { background: rgba(10, 10, 15, .88); border-bottom: 1px solid rgba(255,255,255,.08); }
+        .nav { padding: 14px 0; gap: 20px; }
+        .logo { font-size: 21px; letter-spacing: -.04em; }
+        .nav-links { gap: 22px; }
+        .nav-links a { font-size: 13px; }
+        .search-container { width: min(320px, 28vw); }
+        .search-box { border-radius: 12px; background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.12); }
+        .hero { min-height: 480px; display: flex; align-items: center; text-align: left; position: relative; overflow: hidden; margin: 22px auto 36px; max-width: 1440px; border: 1px solid rgba(255,255,255,.1); border-radius: 28px; background: linear-gradient(90deg, rgba(9,9,13,.97) 0%, rgba(9,9,13,.82) 42%, rgba(9,9,13,.12) 100%), linear-gradient(0deg, rgba(9,9,13,.35), transparent 55%), url("./wallpapers/cars/amg-benz.jpg") center 42% / cover; }
+        .hero .container { width: 100%; margin: 0; }
+        .hero-copy { max-width: 680px; padding: 62px 0; }
+        .hero-kicker, .section-eyebrow { color: #c4b5fd; text-transform: uppercase; font-size: 11px; font-weight: 800; letter-spacing: .16em; }
+        .hero h1 { margin: 16px 0; font-size: clamp(42px, 6vw, 76px); line-height: .98; letter-spacing: -.065em; text-align: left; }
+        .hero h1 span { color: #c4b5fd; }
+        .hero p { max-width: 520px; margin: 0 0 26px; color: rgba(255,255,255,.72); font-size: 16px; }
+        .hero-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+        .cta-button { display: inline-flex; align-items: center; gap: 10px; background: #8b5cf6; border-radius: 12px; box-shadow: 0 12px 32px rgba(139,92,246,.25); }
+        .hero-secondary { color: white; text-decoration: none; font-size: 13px; font-weight: 650; }
+        .hero-secondary i { color: #c4b5fd; margin-left: 6px; }
+        .hero-proof { display: flex; gap: 22px; flex-wrap: wrap; margin-top: 36px; color: rgba(255,255,255,.68); font-size: 12px; }
+        .hero-proof i { color: #c4b5fd; margin-right: 7px; }
+        .wallpapers-section { background: transparent; border: 0; border-radius: 0; backdrop-filter: none; margin: 0; padding: 46px 0; }
+        .desktop-section { margin: 0 auto; max-width: 1440px; padding: 42px 0 52px; border-block: 1px solid rgba(255,255,255,.08); }
+        .section-heading-row { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+        .section-title { margin: 6px 0 0; text-align: left; font-size: clamp(25px, 3vw, 34px); letter-spacing: -.045em; }
+        .section-title-left { margin-bottom: 0; }
+        .section-description { margin-top: 7px; color: rgba(255,255,255,.58); font-size: 14px; }
+        .section-count { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04); border-radius: 999px; padding: 6px 12px; white-space: nowrap; color: rgba(255,255,255,.68); font-size: 12px; }
+        .desktop-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 14px; flex-wrap: wrap; margin: 24px 0; }
+        .desktop-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+        .filter-chip { min-width: auto; min-height: 38px; padding: 8px 14px; border: 1px solid rgba(255,255,255,.1); border-radius: 999px; background: rgba(255,255,255,.04); color: rgba(255,255,255,.7); cursor: pointer; font: inherit; font-size: 12px; transition: .2s ease; }
+        .filter-chip:hover, .filter-chip.active { color: white; border-color: rgba(167,139,250,.55); background: rgba(139,92,246,.18); }
+        .sort-control { display: flex; align-items: center; gap: 9px; color: rgba(255,255,255,.58); font-size: 12px; }
+        .sort-control select { padding: 9px 12px; border-radius: 10px; border: 1px solid rgba(255,255,255,.13); background: #17171e; color: white; font: inherit; }
+        .wallpaper-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 16px; margin: 22px 0; }
+        .wallpaper-card { border: 1px solid rgba(255,255,255,.09); border-radius: 16px; background: #121218; transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease; }
+        .wallpaper-card:hover { transform: translateY(-4px); border-color: rgba(167,139,250,.42); background: #17171f; box-shadow: 0 18px 40px rgba(0,0,0,.3); }
+        .wallpaper-image { height: auto; aspect-ratio: 16 / 10; object-fit: cover; background: #17171e; }
+        .wallpaper-info { padding: 15px 16px; }
+        .wallpaper-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; letter-spacing: -.01em; }
+        .wallpaper-meta { gap: 10px; font-size: 11px; }
+        .download-btn { min-height: 34px; min-width: 0; padding: 7px 10px; border-radius: 9px; background: rgba(139,92,246,.18); border-color: rgba(167,139,250,.28); font-size: 11px; }
+        .favorite-btn { width: 38px; height: 38px; background: rgba(12,12,17,.72); backdrop-filter: blur(8px); }
+        .load-more-btn { border-radius: 12px; background: rgba(139,92,246,.14); border-color: rgba(167,139,250,.28); }
+        .footer { margin-top: 35px; padding: 42px 0 30px; background: #0d0d12; border-top-color: rgba(255,255,255,.08); }
+        .category-chips { border-top-color: rgba(255,255,255,.08); background: rgba(10,10,15,.94); }
+        .category-chip { border-color: rgba(255,255,255,.12); background: rgba(255,255,255,.04); }
+        :focus-visible { outline: 2px solid #c4b5fd; outline-offset: 3px; }
+        @media (max-width: 768px) {
+            html { scroll-padding-top: 88px; }
+            .container { padding-inline: 18px; }
+            .hero { min-height: 410px; margin: 14px 12px 20px; border-radius: 22px; background-position: 57% center; }
+            .hero-copy { padding: 42px 0; }
+            .hero h1 { font-size: clamp(40px, 11vw, 56px); }
+            .hero p { font-size: 14px; }
+            .hero-proof { gap: 10px 17px; margin-top: 25px; }
+            .wallpapers-section, .desktop-section { padding: 32px 0; }
+            .section-heading-row { align-items: start; }
+            .section-title { font-size: 25px; }
+            .wallpaper-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+            .wallpaper-image { height: auto; aspect-ratio: 4 / 3; }
+            .wallpaper-info { padding: 11px; }
+            .wallpaper-title { font-size: 12px; }
+            .desktop-toolbar { align-items: start; }
+            .desktop-filters { gap: 6px; }
+            .filter-chip { min-height: 34px; padding: 6px 10px; font-size: 11px; }
+            .sort-control { margin-left: auto; }
+        }
+        @media (max-width: 480px) {
+            .hero-actions { gap: 14px; }
+            .hero-secondary { width: 100%; }
+            .hero-proof { font-size: 11px; }
+            .wallpaper-grid { gap: 8px; }
+            .download-btn { padding: 5px 7px; font-size: 10px; }
+            .wallpaper-meta { font-size: 10px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+        }
     </style>
 </head>
 <body>
@@ -1321,9 +1406,10 @@
                 </a>
                 <div class="search-container">
                     <i class="fas fa-search search-icon"></i>
-                    <input type="text" id="search-input" class="search-box" placeholder="Search wallpapers...">
+                    <input type="search" id="search-input" class="search-box" placeholder="Search wallpapers..." aria-label="Search wallpapers" autocomplete="off">
                 </div>
                 <ul class="nav-links">
+                    <li><a href="#pc-wallpapers">PC Wallpapers</a></li>
                     <li><a href="#cars">Cars</a></li>
                     <li><a href="#nicolas-maduro">Nicolas Maduro</a></li>
                     <li><a href="#other">Other</a></li>
@@ -1337,6 +1423,7 @@
             </nav>
         </div>
         <div class="category-chips" id="category-chips">
+            <a href="#pc-wallpapers" class="category-chip">PC Wallpapers</a>
             <a href="#cars" class="category-chip">Cars</a>
             <a href="#nicolas-maduro" class="category-chip">Nicolas Maduro</a>
             <a href="#other" class="category-chip">Other</a>
@@ -1345,7 +1432,7 @@
     </header>
 
     <!-- Detail View Modal -->
-    <div class="detail-modal" id="detail-modal">
+    <div class="detail-modal" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="detail-title">
         <div class="detail-content">
             <div class="detail-header">
                 <h2 class="detail-title" id="detail-title">Wallpaper Title</h2>
@@ -1372,7 +1459,7 @@
                     <div id="detail-resolution">3840 x 2160</div>
                     <div id="detail-size">4.2 MB</div>
                 </div>
-                <a id="detail-download-link" class="detail-download-btn locked" onclick="handleDetailDownload()" href="#">
+                <a id="detail-download-link" class="detail-download-btn" onclick="handleDetailDownload()" href="#">
                     <i class="fas fa-download"></i> Download
                 </a>
             </div>
@@ -1380,11 +1467,11 @@
     </div>
 
     <!-- Auth Modal -->
-    <div class="auth-modal" id="auth-modal">
+    <div class="auth-modal" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-title">
         <div class="auth-content">
             <div class="auth-header">
-                <h2 class="auth-title">Welcome</h2>
-                <p class="auth-subtitle">Sign in or create an account to download wallpapers</p>
+                <h2 class="auth-title" id="auth-title">Welcome</h2>
+                <p class="auth-subtitle">Sign in to personalize your visit. Downloads are free and no account is required.</p>
             </div>
 
             <div class="auth-tabs">
@@ -1457,11 +1544,46 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Premium HD Wallpapers</h1>
-            <p>Download stunning high-resolution wallpapers of cars, bikes, planes, and more.</p>
-            <button class="cta-button" onclick="document.getElementById('cars').scrollIntoView({ behavior: 'smooth' })">
-                Browse Wallpapers
-            </button>
+            <div class="hero-copy">
+                <span class="hero-kicker"><i class="fas fa-display"></i> A sharper desktop starts here</span>
+                <h1>Give your screen<br><span>room to breathe.</span></h1>
+                <p>Discover crisp, widescreen 4K wallpapers for your desktop, laptop, and ultrawide setup.</p>
+                <div class="hero-actions">
+                    <button class="cta-button" onclick="document.getElementById('pc-wallpapers').scrollIntoView({ behavior: 'smooth' })"><i class="fas fa-arrow-down"></i> Explore PC wallpapers</button>
+                    <a class="hero-secondary" href="#cars">Browse the full collection <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="hero-proof"><span><i class="fas fa-expand"></i> Widescreen picks</span><span><i class="fas fa-heart"></i> Save favorites</span><span><i class="fas fa-download"></i> Free downloads</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Desktop wallpaper collection -->
+    <section class="wallpapers-section desktop-section" id="pc-wallpapers">
+        <div class="container">
+            <div class="section-heading-row">
+                <div>
+                    <span class="section-eyebrow">Built for the big screen</span>
+                    <h2 class="section-title section-title-left">PC Wallpapers</h2>
+                    <p class="section-description">Widescreen picks for your desktop, laptop, and ultrawide displays.</p>
+                </div>
+                <span class="section-count" id="pc-count"></span>
+            </div>
+            <div class="desktop-toolbar">
+                <div class="desktop-filters" role="group" aria-label="Filter PC wallpapers">
+                    <button class="filter-chip active" type="button" data-filter="all" onclick="setDesktopFilter('all', this)">All wallpapers</button>
+                    <button class="filter-chip" type="button" data-filter="cars" onclick="setDesktopFilter('cars', this)">Cars</button>
+                    <button class="filter-chip" type="button" data-filter="nicolas-maduro" onclick="setDesktopFilter('nicolas-maduro', this)">People</button>
+                    <button class="filter-chip" type="button" data-filter="other" onclick="setDesktopFilter('other', this)">Other</button>
+                </div>
+                <label class="sort-control">Sort
+                    <select id="desktop-sort" onchange="sortDesktopWallpapers(this.value)" aria-label="Sort PC wallpapers">
+                        <option value="featured">Featured</option>
+                        <option value="name">Name A–Z</option>
+                    </select>
+                </label>
+            </div>
+            <div class="wallpaper-grid" id="pc-grid"></div>
+            <div class="load-more-container" id="pc-load-more-container"></div>
         </div>
     </section>
 
@@ -1502,7 +1624,7 @@
     <section class="wallpapers-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title" id="favorites"><i class="fas fa-heart" style="color:#dc143c;"></i> Favorites</h2>
+                <h2 class="section-title" id="favorites"><i class="fas fa-heart" style="color:#8b5cf6;"></i> Favorites</h2>
                 <span class="section-count" id="favorites-count"></span>
             </div>
             <div class="wallpaper-grid" id="favorites-grid"></div>
@@ -1511,7 +1633,7 @@
 
     <!-- Install App Banner -->
     <div class="install-banner" id="install-banner">
-        <img src="/icon.svg" alt="App icon" class="install-banner-icon">
+        <img src="./Icon%201.svg" alt="App icon" class="install-banner-icon">
         <div class="install-banner-text">
             <strong>Install Wallpaper Hub</strong>
             <span>Add to your home screen for full-screen, offline browsing</span>
@@ -1532,7 +1654,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Wallpapers For The Boys. All rights reserved.</p>
+            <p>&copy; 2026 HD Wallpaper Hub. Made for every screen.</p>
             <div class="footer-bottom">
                 <p>Premium wallpapers for your desktop and mobile devices.</p>
             </div>
@@ -1674,7 +1796,65 @@
             'nicolas-maduro': { loaded: 0 },
             'other': { loaded: 0 }
         };
+        const desktopState = { loaded: 0, filter: 'all', sort: 'featured' };
 
+
+        // The repository's curated wallpaper metadata identifies widescreen 4K assets.
+        function getDesktopWallpaperList() {
+            return getAllWallpapersFlat().filter(image => {
+                const match = image.resolution.match(/(\d+)\s*[x×]\s*(\d+)/i);
+                if (!match) return false;
+                const width = Number(match[1]);
+                const height = Number(match[2]);
+                return width >= 1920 && height >= 1080 && width / height >= 1.5;
+            });
+        }
+
+        function setDesktopFilter(filter, button) {
+            desktopState.filter = filter;
+            document.querySelectorAll('.filter-chip').forEach(chip => chip.classList.toggle('active', chip === button));
+            renderDesktopWallpapers(true);
+        }
+
+        function sortDesktopWallpapers(sort) {
+            desktopState.sort = sort;
+            renderDesktopWallpapers(true);
+        }
+
+        function renderDesktopWallpapers(reset = false) {
+            const grid = document.getElementById('pc-grid');
+            const more = document.getElementById('pc-load-more-container');
+            if (!grid || !more) return;
+            const query = (document.getElementById('search-input')?.value || '').trim().toLowerCase();
+            let items = getDesktopWallpaperList().filter(image =>
+                (desktopState.filter === 'all' || image.category === desktopState.filter) &&
+                (!query || image.name.toLowerCase().includes(query) || image.dataCategory.toLowerCase().includes(query))
+            );
+            if (desktopState.sort === 'name') items = items.slice().sort((a, b) => a.name.localeCompare(b.name));
+            const count = document.getElementById('pc-count');
+            if (count) count.textContent = items.length + (items.length === 1 ? ' wallpaper' : ' wallpapers');
+            if (reset) {
+                desktopState.loaded = 0;
+                grid.innerHTML = '';
+            }
+            const batchSize = getLoadMoreCount();
+            const visible = items.slice(desktopState.loaded, desktopState.loaded + batchSize);
+            if (visible.length) {
+                grid.insertAdjacentHTML('beforeend', visible.map(image =>
+                    createWallpaperCard({ name: image.name, resolution: image.resolution, size: image.size }, image.dataCategory)
+                ).join(''));
+            }
+            desktopState.loaded += visible.length;
+            if (!items.length) {
+                grid.innerHTML = '<div class="empty-state">No widescreen wallpapers match this search yet.</div>';
+                more.innerHTML = '';
+            } else if (desktopState.loaded < items.length) {
+                const remaining = items.length - desktopState.loaded;
+                more.innerHTML = '<button class="load-more-btn" type="button" onclick="renderDesktopWallpapers()">Load more <span class="count">(' + remaining + ' left)</span> <i class="fas fa-chevron-down"></i></button>';
+            } else {
+                more.innerHTML = '';
+            }
+        }
 
         function formatCategoryLabel(category) {
             if (!category) return '';
@@ -1700,7 +1880,7 @@
             const altText = formatAltText(wallpaper.name, category);
             const favActive = isFavorite(imageUrl);
             return `
-                <div class="wallpaper-card" onclick="openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}')">
+                <div class="wallpaper-card" role="button" tabindex="0" aria-label="Preview ${wallpaper.name}, ${wallpaper.resolution}" onclick="openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}')" onkeydown="if(event.target===event.currentTarget&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openDetail('${imageUrl}', '${wallpaper.name}', '${wallpaper.resolution}', '${wallpaper.size}', '${category}');}">
                     <button class="favorite-btn ${favActive ? 'active' : ''}" onclick="handleFavoriteClick(event, '${imageUrl}')" aria-label="Save to favorites">
                         <i class="${favActive ? 'fas' : 'far'} fa-heart"></i>
                     </button>
@@ -1709,7 +1889,7 @@
                         <div class="wallpaper-title">${wallpaper.name}</div>
                         <div class="wallpaper-meta">
                             <span>${wallpaper.resolution}</span>
-                            <a class="download-btn locked" onclick="handleCardDownload(event, '${imageUrl}', '${wallpaper.name}')">
+                            <a class="download-btn" onclick="handleCardDownload(event, '${imageUrl}', '${wallpaper.name}')">
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
@@ -1850,6 +2030,7 @@
             });
             updateSectionCounts();
             renderFavorites();
+            renderDesktopWallpapers(true);
         }
 
         // Search functionality
@@ -1882,6 +2063,7 @@
                     loadWallpapers(category, true);
                 }
             });
+            renderDesktopWallpapers(true);
         }
 
         // Handle search input
@@ -1938,7 +2120,7 @@
         function registerServiceWorker() {
             if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('/sw.js').catch(function(err) {
+                    navigator.serviceWorker.register('./sw.js').catch(function(err) {
                         console.warn('Service worker registration failed:', err);
                     });
                 });
@@ -1958,7 +2140,7 @@
         function initCategoryChips() {
             const chips = document.querySelectorAll('.category-chip');
             if (!chips.length || !('IntersectionObserver' in window)) return;
-            const sectionIds = ['cars', 'nicolas-maduro', 'other', 'favorites'];
+            const sectionIds = ['pc-wallpapers', 'cars', 'nicolas-maduro', 'other', 'favorites'];
             const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
 
             const observer = new IntersectionObserver(function(entries) {
@@ -2083,11 +2265,6 @@
         }
 
         function openDetail(imageUrl, title, resolution, size, category) {
-            if (!isUserSignedIn) {
-                openAuthModal();
-                return;
-            }
-
             // Build image list if not already built
             if (currentImageList.length === 0) {
                 buildImageList();
@@ -2216,34 +2393,17 @@
         }
 
         function updateDownloadButtons() {
-            const buttons = document.querySelectorAll('.download-btn');
-            buttons.forEach(btn => {
-                if (isUserSignedIn) {
-                    btn.classList.remove('locked');
-                } else {
-                    btn.classList.add('locked');
-                }
-            });
+            document.querySelectorAll('.download-btn, .detail-download-btn').forEach(btn => btn.classList.remove('locked'));
         }
 
         // Download Handlers
         function handleCardDownload(event, imageUrl, filename) {
             event.stopPropagation();
             
-            if (!isUserSignedIn) {
-                openAuthModal();
-                return;
-            }
-            
             downloadImage(imageUrl, filename);
         }
 
         function handleDetailDownload() {
-            if (!isUserSignedIn) {
-                openAuthModal();
-                return;
-            }
-            
             const link = document.getElementById('detail-download-link');
             link.click();
         }
@@ -2259,6 +2419,14 @@
 
         // Close modal on Escape key
         document.addEventListener('keydown', function(event) {
+            if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
+                event.preventDefault();
+                document.getElementById('search-input')?.focus();
+                return;
+            }
+            const detailOpen = document.getElementById('detail-modal').style.display === 'flex';
+            if (detailOpen && event.key === 'ArrowLeft') showPreviousImage();
+            if (detailOpen && event.key === 'ArrowRight') showNextImage();
             if (event.key === 'Escape') {
                 closeDetail();
                 closeAuthModal();
