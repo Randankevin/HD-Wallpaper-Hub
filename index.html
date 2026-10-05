@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="/HD-Wallpaper-Hub/">
+    <base id="app-base" href="/">
+    <script>
+      document.querySelector('base').href = location.hostname === 'randankevin.github.io'
+        ? '/HD-Wallpaper-Hub/'
+        : '/';
+    </script>
     <meta charset="UTF-8">
     <meta name="google-site-verification" content="2ATTZUXJn1s-caMBw6W2lL8b8Ncj3o6YmSaymjYbk-0" />
     <!-- Basic Meta Tags -->
