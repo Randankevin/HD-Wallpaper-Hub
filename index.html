@@ -1471,7 +1471,7 @@
         <div class="auth-content">
             <div class="auth-header">
                 <h2 class="auth-title" id="auth-title">Welcome</h2>
-                <p class="auth-subtitle">Sign in to personalize your visit. Downloads are free and no account is required.</p>
+                <p class="auth-subtitle">Sign in or create an account to download wallpapers</p>
             </div>
 
             <div class="auth-tabs">
@@ -1889,7 +1889,7 @@
                         <div class="wallpaper-title">${wallpaper.name}</div>
                         <div class="wallpaper-meta">
                             <span>${wallpaper.resolution}</span>
-                            <a class="download-btn" onclick="handleCardDownload(event, '${imageUrl}', '${wallpaper.name}')">
+                            <a class="download-btn ${isUserSignedIn ? '' : 'locked'}" onclick="handleCardDownload(event, '${imageUrl}', '${wallpaper.name}')">
                                 <i class="fas fa-download"></i> Download
                             </a>
                         </div>
@@ -2070,6 +2070,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             initializeGrids();
             updateAuthUI();
+            updateDownloadButtons();
             registerServiceWorker();
             initBackToTop();
             initCategoryChips();
@@ -2220,7 +2221,7 @@
                 const downloadLink = document.getElementById('detail-download-link');
                 downloadLink.href = image.url;
                 downloadLink.download = image.name;
-                downloadLink.classList.remove('locked');
+                downloadLink.classList.toggle('locked', !isUserSignedIn);
 
                 // Update button states
                 document.getElementById('prev-btn').disabled = index === 0;
@@ -2265,6 +2266,11 @@
         }
 
         function openDetail(imageUrl, title, resolution, size, category) {
+            if (!isUserSignedIn) {
+                openAuthModal();
+                return;
+            }
+
             // Build image list if not already built
             if (currentImageList.length === 0) {
                 buildImageList();
@@ -2393,17 +2399,27 @@
         }
 
         function updateDownloadButtons() {
-            document.querySelectorAll('.download-btn, .detail-download-btn').forEach(btn => btn.classList.remove('locked'));
+            document.querySelectorAll('.download-btn').forEach(btn => btn.classList.toggle('locked', !isUserSignedIn));
+            const detailLink = document.getElementById('detail-download-link');
+            if (detailLink) detailLink.classList.toggle('locked', !isUserSignedIn);
         }
 
         // Download Handlers
         function handleCardDownload(event, imageUrl, filename) {
             event.stopPropagation();
             
+            if (!isUserSignedIn) {
+                openAuthModal();
+                return;
+            }
             downloadImage(imageUrl, filename);
         }
 
         function handleDetailDownload() {
+            if (!isUserSignedIn) {
+                openAuthModal();
+                return;
+            }
             const link = document.getElementById('detail-download-link');
             link.click();
         }
